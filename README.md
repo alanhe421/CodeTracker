@@ -1,6 +1,7 @@
-#codetime-代码时光
+# codetime
 
+## a wakatime client
 
-**an app for wakatime**
+可视化展示编码活动
 
 
