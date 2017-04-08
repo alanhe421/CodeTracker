@@ -16,6 +16,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
+import {ProfilePage} from "../pages/profile/profile";
 // let storage: Storage = new Storage();
 
 // export function getAuthHttp(http) {
@@ -36,7 +37,8 @@ import {StatusBar} from "@ionic-native/status-bar";
         ProjectPage,
         CommitsPage,
         DashboardPage,
-        StatsPage
+        StatsPage,
+        ProfilePage
     ],
     imports: [
         BrowserModule,
@@ -54,7 +56,8 @@ import {StatusBar} from "@ionic-native/status-bar";
         ProjectPage,
         CommitsPage,
         DashboardPage,
-        StatsPage
+        StatsPage,
+        ProfilePage
     ],
     providers: [
         {provide: ErrorHandler, useClass: IonicErrorHandler}, ApiService, SplashScreen, StatusBar]

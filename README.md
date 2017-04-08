@@ -20,3 +20,11 @@
 + CORS,跨域问题
 + ng2实现http请求
 + 集成echarts
+
+# Commands
+
+```
+# 安卓版打包
+ionic build android --prod 
+
+```
