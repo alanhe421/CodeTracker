@@ -12,7 +12,10 @@ import {ApiService} from "../providers/api.service";
 import {CommitsPage} from "../pages/commits/commits";
 import {DashboardPage} from "../pages/dashboard/dashboard";
 import {StatsPage} from "../pages/stats/stats";
-// import {AuthService} from "../providers/auth.service";
+import {BrowserModule} from "@angular/platform-browser";
+import {HttpModule} from "@angular/http";
+import {SplashScreen} from "@ionic-native/splash-screen";
+import {StatusBar} from "@ionic-native/status-bar";
 // let storage: Storage = new Storage();
 
 // export function getAuthHttp(http) {
@@ -36,7 +39,10 @@ import {StatsPage} from "../pages/stats/stats";
         StatsPage
     ],
     imports: [
-        IonicModule.forRoot(AuthApp)],
+        BrowserModule,
+        HttpModule,
+        IonicModule.forRoot(AuthApp)
+    ],
     bootstrap: [IonicApp],
     entryComponents: [
         AuthApp,
@@ -51,7 +57,7 @@ import {StatsPage} from "../pages/stats/stats";
         StatsPage
     ],
     providers: [
-        {provide: ErrorHandler, useClass: IonicErrorHandler}, ApiService]
+        {provide: ErrorHandler, useClass: IonicErrorHandler}, ApiService, SplashScreen, StatusBar]
 })
 export class AppModule {
 }
