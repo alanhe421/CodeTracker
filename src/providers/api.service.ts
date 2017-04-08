@@ -1,21 +1,23 @@
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 /**
  * Created by He on 3/3/17.
  * 请求API
  */
-export const WAKA_API_PREFIX = 'https://wakatime.com/api/v1/';
 @Injectable()
 export class ApiService {
 
+    options: any;
 
     constructor(private http: Http) {
 
     }
 
     createAuthorizationHeader() {
-        // this.option.headers.append('Authorization', `Basic ` + localStorage.getItem('Authorization'));
+        let headers = new Headers({'Content-Type': 'application/json'});
+        headers.append('Authorization', `Basic ${localStorage.getItem('Authorization')}`);
+        this.options = new RequestOptions({headers: headers});
     }
 
     /**
@@ -23,10 +25,8 @@ export class ApiService {
      * @param project
      * @returns {Observable<Response>}
      */
-    getCommits(project: string) {
-
-        return this.http.get(`${WAKA_API_PREFIX}users/current/projects/${project}/commits`).map(res => res.json());
-
+    getCommits(projectId: string) {
+        return this.http.get(`/api/v1/users/current/projects/${projectId}/commits`).map(res => res.json());
     }
 
     /**
@@ -51,11 +51,21 @@ export class ApiService {
     }
 
     /**
+     * A user's logged time for the given time range
+     * @param range
+     * @returns {Observable<R>}
+     */
+    getStats(range: string) {
+        return this.http.get(`/api/v1/users/current/stats/${range}`, this.options).map(res => res.json());
+    }
+
+
+    /**
      *
      * @returns {Observable<R>}
      */
     getProjects() {
-        return this.http.get(`${WAKA_API_PREFIX}users/current/projects`).map(res => res.json());
+        return this.http.get(`/api/v1/users/current/projects`, this.options).map(res => res.json());
     }
 
     private handleError(error: Response | any) {

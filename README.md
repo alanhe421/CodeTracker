@@ -13,3 +13,10 @@
 
 
 ![wakatime](src/assets/icon/wakatime-logo-over-name.png)
+
+------
+## 涉及技术点
+
++ CORS,跨域问题
++ ng2实现http请求
++ 集成echarts

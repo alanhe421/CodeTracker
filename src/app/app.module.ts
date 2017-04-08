@@ -9,6 +9,9 @@ import {TabsPage} from "../pages/tabs/tabs";
 import {WelcomePage} from "../pages/welcome/welcome";
 import {ProjectPage} from "../pages/project/project";
 import {ApiService} from "../providers/api.service";
+import {CommitsPage} from "../pages/commits/commits";
+import {DashboardPage} from "../pages/dashboard/dashboard";
+import {StatsPage} from "../pages/stats/stats";
 // import {AuthService} from "../providers/auth.service";
 // let storage: Storage = new Storage();
 
@@ -27,7 +30,10 @@ import {ApiService} from "../providers/api.service";
         ContactPage,
         HomePage,
         TabsPage,
-        ProjectPage
+        ProjectPage,
+        CommitsPage,
+        DashboardPage,
+        StatsPage
     ],
     imports: [
         IonicModule.forRoot(AuthApp)],
@@ -39,7 +45,10 @@ import {ApiService} from "../providers/api.service";
         ContactPage,
         HomePage,
         TabsPage,
-        ProjectPage
+        ProjectPage,
+        CommitsPage,
+        DashboardPage,
+        StatsPage
     ],
     providers: [
         {provide: ErrorHandler, useClass: IonicErrorHandler}, ApiService]

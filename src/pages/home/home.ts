@@ -1,20 +1,20 @@
 import {Component} from "@angular/core";
 import {NavController} from "ionic-angular";
-import {ProjectPage} from "../project/project";
+import {DashboardPage} from "../dashboard/dashboard";
 
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
 })
 export class HomePage {
-    rootPage: any = ProjectPage;
+    rootPage: any = DashboardPage;
 
     constructor(public navCtrl: NavController) {
 
     }
 
     openPage() {
-        this.navCtrl.push(ProjectPage);
+        this.navCtrl.push(DashboardPage);
     }
 
 }
