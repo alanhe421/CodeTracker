@@ -4,7 +4,6 @@ import {AuthApp} from "./app.component";
 import {AboutPage} from "../pages/about/about";
 import {ContactPage} from "../pages/contact/contact";
 import {HomePage} from "../pages/home/home";
-import {TabsPage} from "../pages/tabs/tabs";
 // import {Storage} from "@ionic/storage";
 import {WelcomePage} from "../pages/welcome/welcome";
 import {ProjectPage} from "../pages/project/project";
@@ -17,6 +16,9 @@ import {HttpModule} from "@angular/http";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
 import {ProfilePage} from "../pages/profile/profile";
+import {AppVersion} from "@ionic-native/app-version";
+import {LeaderboardsPage} from "../pages/leaderboards/leaderboards";
+import {LeaderdetailPage} from "../pages/leaderdetail/leaderdetail";
 // let storage: Storage = new Storage();
 
 // export function getAuthHttp(http) {
@@ -33,12 +35,13 @@ import {ProfilePage} from "../pages/profile/profile";
         AboutPage,
         ContactPage,
         HomePage,
-        TabsPage,
         ProjectPage,
         CommitsPage,
         DashboardPage,
         StatsPage,
-        ProfilePage
+        ProfilePage,
+        LeaderboardsPage,
+        LeaderdetailPage
     ],
     imports: [
         BrowserModule,
@@ -52,15 +55,16 @@ import {ProfilePage} from "../pages/profile/profile";
         AboutPage,
         ContactPage,
         HomePage,
-        TabsPage,
         ProjectPage,
         CommitsPage,
         DashboardPage,
         StatsPage,
-        ProfilePage
+        ProfilePage,
+        LeaderboardsPage,
+        LeaderdetailPage
     ],
     providers: [
-        {provide: ErrorHandler, useClass: IonicErrorHandler}, ApiService, SplashScreen, StatusBar]
+        {provide: ErrorHandler, useClass: IonicErrorHandler}, ApiService, SplashScreen, StatusBar, AppVersion]
 })
 export class AppModule {
 }

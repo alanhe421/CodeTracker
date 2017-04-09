@@ -72,6 +72,13 @@ export class ApiService {
         return this.http.get(`/api/v1/users/current/projects`, this.options).map(res => res.json());
     }
 
+    /**
+     *  List of users ranked by logged time in descending order.
+     */
+    getLeaders() {
+        return this.http.get(`/api/v1/leaders`, this.options).map(res => res.json());
+    }
+
     private handleError(error: Response | any) {
         // In a real world app, you might use a remote logging infrastructure
         let errMsg: string;

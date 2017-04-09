@@ -2,7 +2,7 @@
 <widget id="cn.he.codetime" version="0.0.1" xmlns="http://www.w3.org/ns/widgets">
     <name>codetime</name>
     <description>An wakatime app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">he</author>
+    <author email="he@1991421.cn" href="http://1991421.cn/">he</author>
     <content srcProfilePage="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
@@ -42,4 +42,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.0" />
     <engine name="android" spec="~5.2.2" />
+    <plugin name="cordova-plugin-app-version" spec="~0.1.9" />
 </widget>

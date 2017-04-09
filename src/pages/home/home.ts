@@ -1,9 +1,11 @@
 import {Component} from "@angular/core";
 import {NavController} from "ionic-angular";
-import {DashboardPage} from "../dashboard/dashboard";
 import {ProjectPage} from "../project/project";
 import {WelcomePage} from "../welcome/welcome";
 import {ApiService} from "../../providers/api.service";
+import {AboutPage} from "../about/about";
+import {LeaderboardsPage} from "../leaderboards/leaderboards";
+import {DashboardPage} from "../dashboard/dashboard";
 
 @Component({
     selector: 'page-home',
@@ -12,12 +14,18 @@ import {ApiService} from "../../providers/api.service";
 export class HomePage {
     rootPage: any = DashboardPage;
     pages: Array<{title: string, component: any, icon: string}>;
-
+    aboutPage = AboutPage;
 
     constructor(public navCtrl: NavController, private apiService: ApiService) {
         this.pages = [
             {
+                title: 'Dashboard', component: DashboardPage, icon: 'code'
+            },
+            {
                 title: 'Projects', component: ProjectPage, icon: 'code'
+            },
+            {
+                title: 'Leaderboards', component: LeaderboardsPage, icon: 'star'
             }
         ];
     }
