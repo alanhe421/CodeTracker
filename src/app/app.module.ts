@@ -19,6 +19,7 @@ import {ProfilePage} from "../pages/profile/profile";
 import {AppVersion} from "@ionic-native/app-version";
 import {LeaderboardsPage} from "../pages/leaderboards/leaderboards";
 import {LeaderdetailPage} from "../pages/leaderdetail/leaderdetail";
+import {AuthService} from "../providers/auth.service";
 // let storage: Storage = new Storage();
 
 // export function getAuthHttp(http) {
@@ -64,7 +65,10 @@ import {LeaderdetailPage} from "../pages/leaderdetail/leaderdetail";
         LeaderdetailPage
     ],
     providers: [
-        {provide: ErrorHandler, useClass: IonicErrorHandler}, ApiService, SplashScreen, StatusBar, AppVersion]
+        {
+            provide: ErrorHandler,
+            useClass: IonicErrorHandler
+        }, ApiService, AuthService, SplashScreen, StatusBar, AppVersion]
 })
 export class AppModule {
 }

@@ -21,6 +21,7 @@ export class LeaderboardsPage {
     constructor(public navCtrl: NavController, private apiService: ApiService, public loadingCtrl: LoadingController) {
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
+            showBackdrop: false
             // content: 'Please wait...'
         });
     }
@@ -35,7 +36,7 @@ export class LeaderboardsPage {
     }
 
     openDetail(leader: any) {
-        this.navCtrl.push(LeaderdetailPage,{leader:leader});
+        this.navCtrl.push(LeaderdetailPage, {leader: leader});
     }
 
 }

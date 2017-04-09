@@ -17,12 +17,14 @@ export class StatsPage {
     range: string;
     @ViewChild('languagesUsed') languagesUsed: ElementRef;//使用语言
     loading: Loading;
+    data: any;
 
     constructor(public navParams: NavParams,
                 private apiService: ApiService, public loadingCtrl: LoadingController) {
         this.range = this.navParams.get('range');
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
+            showBackdrop: false
             // content: 'Please wait...'
         });
 
@@ -33,6 +35,7 @@ export class StatsPage {
         this.loading.present();
         this.apiService.getStats(this.range).subscribe(res => {
             console.log(res);
+            this.data = res.data;
             this.initLanguageUsed(res.data.languages);
             this.loading.dismiss();
         });
@@ -47,10 +50,6 @@ export class StatsPage {
                 text: 'Languages',
                 x: 'center'
             },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
             legend: {
                 show: false,
                 orient: 'vertical',
@@ -61,8 +60,13 @@ export class StatsPage {
                 {
                     name: '访问来源',
                     type: 'pie',
-                    radius: ['50%', '70%'],
+                    radius: ['50%', '90%'],
                     data: [],
+                    label: {
+                        normal: {
+                            position: 'inside'
+                        }
+                    },
                     itemStyle: {
                         emphasis: {
                             shadowBlur: 10,

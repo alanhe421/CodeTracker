@@ -4,3 +4,13 @@
     margin-left: 10rem;
     margin-right: 10rem;
 }
+
+#left-menu-header {
+    background-color: #007aff;
+    height: 20%;
+}
+
+#user-photo {
+    width: 20%;
+    height: 20%;
+}

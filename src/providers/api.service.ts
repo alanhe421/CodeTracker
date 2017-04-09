@@ -44,7 +44,7 @@ export class ApiService {
      * A single user.
      */
     getUsers() {
-
+        return this.http.get(`/api/v1/users/current`, this.options).map(res => res.json());
     }
 
     /**

@@ -6,6 +6,7 @@ import {ApiService} from "../../providers/api.service";
 import {AboutPage} from "../about/about";
 import {LeaderboardsPage} from "../leaderboards/leaderboards";
 import {DashboardPage} from "../dashboard/dashboard";
+import {AuthService} from "../../providers/auth.service";
 
 @Component({
     selector: 'page-home',
@@ -15,8 +16,11 @@ export class HomePage {
     rootPage: any = DashboardPage;
     pages: Array<{title: string, component: any, icon: string}>;
     aboutPage = AboutPage;
+    userInfo: any;
 
-    constructor(public navCtrl: NavController, private apiService: ApiService) {
+    constructor(public navCtrl: NavController, private apiService: ApiService, private authService: AuthService) {
+        this.userInfo = this.authService.userInfo;
+
         this.pages = [
             {
                 title: 'Dashboard', component: DashboardPage, icon: 'code'

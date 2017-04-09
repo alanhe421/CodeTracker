@@ -1,8 +1,11 @@
 <ion-menu [content]="mycontent">
-    <ion-header>
-        <ion-toolbar>
-            <ion-title>Menu</ion-title>
-        </ion-toolbar>
+    <ion-header id="left-menu-header" padding>
+        <ion-avatar item-left>
+            <img src="{{userInfo?.photo}}" id="user-photo">
+        </ion-avatar>
+        <div>{{userInfo?.display_name}}</div>
+        <div>{{userInfo?.email}}</div>
+
     </ion-header>
     <ion-content>
         <ion-list>

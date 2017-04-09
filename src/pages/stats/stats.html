@@ -5,7 +5,17 @@
   Ionic pages and navigation.
 -->
 <ion-content padding>
-    <div #languagesUsed id="languages-used" style="width: 100%;height: 300px">
+    <ion-card>
+        <ion-card-header>
+            Logged time in last 7 days
+        </ion-card-header>
+
+        <ion-card-content>
+            <!-- Add card content here! -->
+            {{data?.human_readable_total}}
+        </ion-card-content>
+    </ion-card>
+    <div #languagesUsed id="languages-used" style="width: 100%;height: 450px">
 
 
     </div>
