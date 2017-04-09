@@ -20,6 +20,10 @@ export class ApiService {
         this.options = new RequestOptions({headers: headers});
     }
 
+    delAuthorizationHeader() {
+        this.options.headers.removeItem('Authorization');
+    }
+
     /**
      * List of commits for a WakaTime project showing the time spent coding in each commit.
      * @param project
