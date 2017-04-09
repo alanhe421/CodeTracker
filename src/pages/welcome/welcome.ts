@@ -1,7 +1,8 @@
 import {Component} from "@angular/core";
-import {NavController, NavParams} from "ionic-angular";
+import {NavController} from "ionic-angular";
 import {Base64} from "js-base64";
 import {ApiService} from "../../providers/api.service";
+import {AuthService} from "../../providers/auth.service";
 import {HomePage} from "../home/home";
 /*
  Generated class for the Welcome page.
@@ -18,8 +19,8 @@ export class WelcomePage {
 
     apiKey: string = '';
 
-    constructor(public navCtrl: NavController, public navParams: NavParams,
-                private apiService: ApiService) {
+    constructor(public navCtrl: NavController,
+                private apiService: ApiService, private authService: AuthService) {
     }
 
     ionViewDidLoad() {
@@ -27,10 +28,14 @@ export class WelcomePage {
     }
 
     saveKey() {
-        console.log(this.apiKey);
         localStorage.setItem('Authorization', Base64.encode(this.apiKey));
         this.apiService.createAuthorizationHeader();
-        this.navCtrl.setRoot(HomePage);
+
+        this.apiService.getUsers().subscribe(res => {
+            this.authService.isLoggedIn = true;
+            this.authService.userInfo = res.data;
+            this.navCtrl.setRoot(HomePage);
+        })
     }
 
 }
