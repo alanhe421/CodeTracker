@@ -5,6 +5,8 @@ import {Observable} from "rxjs";
  * Created by He on 3/3/17.
  * 请求API
  */
+const WAKATIME_API_URL = 'https://wakatime.com/api/v1';
+
 @Injectable()
 export class ApiService {
 
@@ -30,7 +32,7 @@ export class ApiService {
      * @returns {Observable<Response>}
      */
     getCommits(projectId: string) {
-        return this.http.get(`/api/v1/users/current/projects/${projectId}/commits`).map(res => res.json());
+        return this.http.get(`${WAKATIME_API_URL}/users/current/projects/${projectId}/commits`).map(res => res.json());
     }
 
     /**
@@ -44,7 +46,7 @@ export class ApiService {
      * A single user.
      */
     getUsers() {
-        return this.http.get(`/api/v1/users/current`, this.options).map(res => res.json());
+        return this.http.get(`${WAKATIME_API_URL}/users/current`, this.options).map(res => res.json());
     }
 
     /**
@@ -60,7 +62,7 @@ export class ApiService {
      * @returns {Observable<R>}
      */
     getStats(range: string) {
-        return this.http.get(`/api/v1/users/current/stats/${range}`, this.options).map(res => res.json());
+        return this.http.get(`${WAKATIME_API_URL}/users/current/stats/${range}`, this.options).map(res => res.json());
     }
 
 
@@ -69,14 +71,14 @@ export class ApiService {
      * @returns {Observable<R>}
      */
     getProjects() {
-        return this.http.get(`/api/v1/users/current/projects`, this.options).map(res => res.json());
+        return this.http.get(`${WAKATIME_API_URL}/users/current/projects`, this.options).map(res => res.json());
     }
 
     /**
      *  List of users ranked by logged time in descending order.
      */
     getLeaders() {
-        return this.http.get(`/api/v1/leaders`, this.options).map(res => res.json());
+        return this.http.get(`${WAKATIME_API_URL}/leaders`, this.options).map(res => res.json());
     }
 
     private handleError(error: Response | any) {

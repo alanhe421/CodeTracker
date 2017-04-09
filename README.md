@@ -28,13 +28,17 @@
 ## 涉及技术点
 
 + ionic2使用(menu,tabs,nav,native-plugins,http)
-+ CORS,跨域问题
++ CORS,跨域问题,chrome需要安装[插件Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
 + 集成echarts
 
 
-# Commands
+## Commands
 
 ```
+# 初始化开发环境
+
+npm i
+
 # 浏览器运行
 ionic serve
 

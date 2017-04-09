@@ -2,11 +2,5 @@
   "name": "cutePuppyPics",
   "app_id": "",
   "v2": true,
-  "typescript": true,
-  "proxies": [
-    {
-      "path": "/api/v1",
-      "proxyUrl": "https://wakatime.com/api/v1"
-    }
-  ]
+  "typescript": true
 }
