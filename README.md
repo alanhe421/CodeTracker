@@ -24,6 +24,9 @@
 # Commands
 
 ```
+# 浏览器运行
+ionic serve
+
 # 安卓版打包
 ionic build android --prod 
 

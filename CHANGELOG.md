@@ -4,5 +4,6 @@
 
    + add ~~angular2-jwt~~
    + etc
+   + wechart share
    
    
