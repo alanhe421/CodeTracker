@@ -1,29 +1,51 @@
 <ion-header>
-    <ion-navbar>
-        <ion-title>Profile</ion-title>
-    </ion-navbar>
+    <ion-toolbar>
+        <ion-title>
+            Profile
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios">Cancel</span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
+<ion-content>
 
-<!--<ion-content padding *ngIf="!auth.authenticated()">-->
+    <ion-list>
+        <ion-item>
+            <ion-avatar item-left>
+                <img src="{{userInfo.photo}}">
+            </ion-avatar>
+            <h2>{{userInfo.display_name}}</h2>
+            <p>{{userInfo.email}}</p>
+        </ion-item>
 
-    <!--<button ion-button block (click)="auth.login()">Login</button>-->
+        <ion-item>
+            website
+            <ion-note item-right>
+                {{userInfo.website}}
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            timezone
+            <ion-note item-right>
+                {{userInfo.timezone}}
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            last_plugin_name
+            <ion-note item-right>
+                {{userInfo.last_plugin_name}}
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            last_project
+            <ion-note item-right>
+                {{userInfo.last_project}}
+            </ion-note>
+        </ion-item>
+    </ion-list>
 
-<!--</ion-content>-->
-
-<!--<ion-content padding *ngIf="auth.authenticated()">-->
-
-    <!--<ion-card>-->
-
-        <!--<ion-item *ngIf="auth.user">-->
-            <!--<ion-avatar item-left>-->
-                <!--<img src="{{ auth.user.picture }}">-->
-            <!--</ion-avatar>-->
-            <!--<h2>{{ auth.user.nickname }}</h2>-->
-            <!--<p>{{ auth.user.email }}</p>-->
-        <!--</ion-item>-->
-
-    <!--</ion-card>-->
-
-    <!--<button ion-button block (click)="auth.logout()">Logout</button>-->
-
-<!--</ion-content>-->
+</ion-content>

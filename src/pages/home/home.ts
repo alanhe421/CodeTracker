@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {NavController} from "ionic-angular";
+import {NavController, ModalController} from "ionic-angular";
 import {ProjectPage} from "../project/project";
 import {WelcomePage} from "../welcome/welcome";
 import {ApiService} from "../../providers/api.service";
@@ -7,6 +7,7 @@ import {AboutPage} from "../about/about";
 import {LeaderboardsPage} from "../leaderboards/leaderboards";
 import {DashboardPage} from "../dashboard/dashboard";
 import {AuthService} from "../../providers/auth.service";
+import {ProfilePage} from "../profile/profile";
 
 @Component({
     selector: 'page-home',
@@ -18,7 +19,9 @@ export class HomePage {
     aboutPage = AboutPage;
     userInfo: any;
 
-    constructor(public navCtrl: NavController, private apiService: ApiService, private authService: AuthService) {
+    constructor(public navCtrl: NavController, private apiService: ApiService,
+                private authService: AuthService,
+                public modalCtrl: ModalController) {
         this.userInfo = this.authService.userInfo;
 
         this.pages = [
@@ -43,6 +46,11 @@ export class HomePage {
         this.navCtrl.setRoot(WelcomePage);
         localStorage.removeItem('Authorization');
         this.apiService.createAuthorizationHeader();
+    }
+
+    presentModal() {
+        let modal = this.modalCtrl.create(ProfilePage);
+        modal.present();
     }
 
 }

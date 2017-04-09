@@ -24,7 +24,7 @@ export class StatsPage {
         this.range = this.navParams.get('range');
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
-            showBackdrop: false
+            showBackdrop: true
             // content: 'Please wait...'
         });
 

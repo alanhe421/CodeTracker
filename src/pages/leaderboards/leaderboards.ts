@@ -21,7 +21,7 @@ export class LeaderboardsPage {
     constructor(public navCtrl: NavController, private apiService: ApiService, public loadingCtrl: LoadingController) {
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
-            showBackdrop: false
+            showBackdrop: true
             // content: 'Please wait...'
         });
     }

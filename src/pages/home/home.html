@@ -1,6 +1,6 @@
 <ion-menu [content]="mycontent">
     <ion-header id="left-menu-header" padding>
-        <ion-avatar item-left>
+        <ion-avatar item-left (click)="presentModal()">
             <img src="{{userInfo?.photo}}" id="user-photo">
         </ion-avatar>
         <div>{{userInfo?.display_name}}</div>
