@@ -17,6 +17,7 @@ export class LeaderboardsPage {
 
     data: Array<any>;
     loading: Loading;
+    page: number = 1;
 
     constructor(public navCtrl: NavController, private apiService: ApiService, public loadingCtrl: LoadingController) {
         this.loading = this.loadingCtrl.create({
@@ -28,9 +29,14 @@ export class LeaderboardsPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad Leaderboards');
+        this.loadMore();
+    }
+
+    loadMore() {
         this.loading.present();
-        this.apiService.getLeaders().subscribe(res => {
+        this.apiService.getLeaders(this.page).subscribe(res => {
             this.data = res.data;
+            this.page += 1;
             this.loading.dismiss();
         })
     }

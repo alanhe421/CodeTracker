@@ -77,8 +77,8 @@ export class ApiService {
     /**
      *  List of users ranked by logged time in descending order.
      */
-    getLeaders() {
-        return this.http.get(`${WAKATIME_API_URL}/leaders`, this.options).map(res => res.json());
+    getLeaders(page:number) {
+        return this.http.get(`${WAKATIME_API_URL}/leaders?page=${page}`, this.options).map(res => res.json());
     }
 
     private handleError(error: Response | any) {
