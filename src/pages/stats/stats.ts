@@ -2,6 +2,7 @@ import {Component, ViewChild, ElementRef} from "@angular/core";
 import {NavParams, LoadingController, Loading} from "ionic-angular";
 import {ApiService} from "../../providers/api.service";
 import * as echarts from "echarts";
+import * as moment from "moment";
 /*
  Generated class for the Stats page.
 
@@ -38,6 +39,10 @@ export class StatsPage {
             this.data = res.data;
             this.initLanguageUsed(res.data.languages);
             this.loading.dismiss();
+        });
+
+        this.apiService.getDurations(moment().format('YYYY-MM-DD')).subscribe(res => {
+            console.log(res);
         });
     }
 

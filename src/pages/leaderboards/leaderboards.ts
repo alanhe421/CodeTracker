@@ -34,7 +34,7 @@ export class LeaderboardsPage {
 
     loadMore() {
         this.loading.present();
-        this.apiService.getLeaders(this.page).subscribe(res => {
+        this.apiService.getLeaders(null,this.page).subscribe(res => {
             this.data = res.data;
             this.page += 1;
             this.loading.dismiss();

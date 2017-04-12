@@ -1,6 +1,7 @@
 import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
+
 /**
  * Created by He on 3/3/17.
  * 请求API
@@ -38,9 +39,83 @@ export class ApiService {
     /**
      * A user's logged time for the given day as an array of duration blocks.
      */
-    getDurations() {
+    getDurations(date: string, project?: string, branches?: string) {
+        let url = `${WAKATIME_API_URL}/users/current/durations?date=${date}`;
+        if (project) {
+            url += `&project=${project}`;
+        }
+        if (branches) {
+            url += `&branches=${branches}`;
+        }
+        return this.http.get(url, this.options).map(res => res.json());
 
     }
+
+    /**
+     * A user's heartbeats sent from plugins for the given day as an array.
+     * @returns {Observable<R>}
+     */
+    getHeartbeats(date: string) {
+        let url = `${WAKATIME_API_URL}/users/current/heartbeats?date=${date}`;
+        return this.http.get(url, this.options).map(res => res.json());
+    }
+
+    /**
+     *  List of users ranked by logged time in descending order.
+     */
+    getLeaders(language?: string, page?: number) {
+        let url = `${WAKATIME_API_URL}/leaders?`;
+        if (language) {
+            url += `language=${language}&`
+        }
+        if (page) {
+            url += `page=${page}&`
+        }
+        return this.http.get(url, this.options).map(res => res.json());
+    }
+
+    /**
+     *
+     * @returns {Observable<R>}
+     */
+    getProjects() {
+        return this.http.get(`${WAKATIME_API_URL}/users/current/projects`, this.options).map(res => res.json());
+    }
+
+
+    /**
+     * A user's logged time for the given time range
+     * @param range
+     * @returns {Observable<R>}
+     */
+    getStats(range: string, timeout?: number, writes_only?: boolean, project?: string) {
+        let url = `${WAKATIME_API_URL}/users/current/stats/${range}`;
+        if (timeout) {
+            url += `timeout=${timeout}&`
+        }
+        if (writes_only) {
+            url += `writes_only=${writes_only}&`
+        }
+        if (project) {
+            url += `project=${project}&`
+        }
+        return this.http.get(url, this.options).map(res => res.json());
+    }
+
+    /**
+     * A user's logged time for the given time range as an array of summaries segmented by day.
+     */
+    getSummaries(start: string, end: string, project?: string, branches?: string) {
+        let url = `${WAKATIME_API_URL}/users/current/summaries?start=${start}&end=${end}`;
+        if (project) {
+            url += `project=${project}&`
+        }
+        if (branches) {
+            url += `branches=${branches}&`
+        }
+        return this.http.get(url, this.options).map(res => res.json());
+    }
+
 
     /**
      * A single user.
@@ -53,33 +128,9 @@ export class ApiService {
      * List of plugins which have sent data for this user.
      */
     getUserAgents() {
-
+        return this.http.get(`${WAKATIME_API_URL}/users/current/user_agents`, this.options).map(res => res.json());
     }
 
-    /**
-     * A user's logged time for the given time range
-     * @param range
-     * @returns {Observable<R>}
-     */
-    getStats(range: string) {
-        return this.http.get(`${WAKATIME_API_URL}/users/current/stats/${range}`, this.options).map(res => res.json());
-    }
-
-
-    /**
-     *
-     * @returns {Observable<R>}
-     */
-    getProjects() {
-        return this.http.get(`${WAKATIME_API_URL}/users/current/projects`, this.options).map(res => res.json());
-    }
-
-    /**
-     *  List of users ranked by logged time in descending order.
-     */
-    getLeaders(page:number) {
-        return this.http.get(`${WAKATIME_API_URL}/leaders?page=${page}`, this.options).map(res => res.json());
-    }
 
     private handleError(error: Response | any) {
         // In a real world app, you might use a remote logging infrastructure
