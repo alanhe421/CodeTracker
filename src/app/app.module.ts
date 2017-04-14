@@ -20,6 +20,7 @@ import {AppVersion} from "@ionic-native/app-version";
 import {LeaderboardsPage} from "../pages/leaderboards/leaderboards";
 import {LeaderdetailPage} from "../pages/leaderdetail/leaderdetail";
 import {AuthService} from "../providers/auth.service";
+import {UseragentsPage} from "../pages/useragents/useragents";
 // let storage: Storage = new Storage();
 
 // export function getAuthHttp(http) {
@@ -42,7 +43,8 @@ import {AuthService} from "../providers/auth.service";
         StatsPage,
         ProfilePage,
         LeaderboardsPage,
-        LeaderdetailPage
+        LeaderdetailPage,
+        UseragentsPage
     ],
     imports: [
         BrowserModule,
@@ -62,7 +64,8 @@ import {AuthService} from "../providers/auth.service";
         StatsPage,
         ProfilePage,
         LeaderboardsPage,
-        LeaderdetailPage
+        LeaderdetailPage,
+        UseragentsPage
     ],
     providers: [
         {

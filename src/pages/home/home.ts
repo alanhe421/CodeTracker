@@ -8,6 +8,7 @@ import {LeaderboardsPage} from "../leaderboards/leaderboards";
 import {DashboardPage} from "../dashboard/dashboard";
 import {AuthService} from "../../providers/auth.service";
 import {ProfilePage} from "../profile/profile";
+import {UseragentsPage} from "../useragents/useragents";
 
 @Component({
     selector: 'page-home',
@@ -33,6 +34,9 @@ export class HomePage {
             },
             {
                 title: 'Leaderboards', component: LeaderboardsPage, icon: 'star'
+            },
+            {
+                title: 'UserAgents', component: UseragentsPage, icon: 'star'
             }
         ];
     }

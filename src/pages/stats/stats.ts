@@ -19,6 +19,7 @@ export class StatsPage {
     @ViewChild('languagesUsed') languagesUsed: ElementRef;//使用语言
     loading: Loading;
     data: any;
+    grandTotal: any;
 
     constructor(public navParams: NavParams,
                 private apiService: ApiService, public loadingCtrl: LoadingController) {
@@ -40,9 +41,12 @@ export class StatsPage {
             this.initLanguageUsed(res.data.languages);
             this.loading.dismiss();
         });
+        let now = moment().format('YYYY-MM-DD');
 
-        this.apiService.getDurations(moment().format('YYYY-MM-DD')).subscribe(res => {
-            console.log(res);
+        this.apiService.getSummaries(now, now).subscribe(res => {
+            res = res.data[0];
+            this.grandTotal = res['grand_total'];
+            console.log(res['grand_total']);
         });
     }
 
@@ -96,5 +100,13 @@ export class StatsPage {
 
     }
 
+    doRefresh(refresher) {
+        console.log('Begin async operation', refresher);
+
+        setTimeout(() => {
+            console.log('Async operation has ended');
+            refresher.complete();
+        }, 2000);
+    }
 
 }
