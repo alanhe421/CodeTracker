@@ -17,6 +17,7 @@ export class StatsPage {
 
     range: string;
     @ViewChild('languagesUsed') languagesUsed: ElementRef;//使用语言
+    @ViewChild('editorsUsed') editorsUsed: ElementRef;//编辑器
     loading: Loading;
     data: any;
     grandTotal: any;
@@ -39,6 +40,7 @@ export class StatsPage {
             console.log(res);
             this.data = res.data;
             this.initLanguageUsed(res.data.languages);
+            this.initEditors(res.data.editors);
             this.loading.dismiss();
         });
         let now = moment().format('YYYY-MM-DD');
@@ -48,21 +50,28 @@ export class StatsPage {
             this.grandTotal = res['grand_total'];
             console.log(res['grand_total']);
         });
+
     }
 
 
+    /**
+     *
+     * @param languages
+     */
     initLanguageUsed(languages: Array<any>): void {
         let container = this.languagesUsed.nativeElement;
         let myChart = echarts.init(container);
         let option = {
             title: {
                 text: 'Languages',
-                x: 'center'
+                left: 'center',
+                top: 'center'
             },
             legend: {
-                show: false,
-                orient: 'vertical',
-                left: 'left',
+                show: true,
+                // orient: 'horizontal',
+                // left: 'left',
+                bottom: 0,
                 data: []
             },
             series: [
@@ -95,18 +104,63 @@ export class StatsPage {
         myChart.setOption(option);
     }
 
+    /**
+     *
+     */
+    initEditors(editors: Array<any>): void {
+        let container = this.editorsUsed.nativeElement;
+        let myChart = echarts.init(container);
+        let option = {
+            title: {
+                text: 'Editors',
+                left: 'center',
+                top: 'center',
+            },
+            legend: {
+                show: true,
+                bottom: 0,
+                data: []
+            },
+            series: [
+                {
+                    name: '编辑器',
+                    type: 'pie',
+                    radius: ['50%', '90%'],
+                    data: [],
+                    label: {
+                        normal: {
+                            position: 'inside'
+                        }
+                    },
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        for (let item of editors) {
+            option.series[0].data.push({value: item['total_seconds'], name: item['name']});
+            option.legend.data.push(item['name']);
+        }
 
-    initEditors(): void {
 
+        myChart.setOption(option);
     }
 
-    doRefresh(refresher) {
-        console.log('Begin async operation', refresher);
 
-        setTimeout(() => {
-            console.log('Async operation has ended');
+    //刷新
+    doRefresh(refresher) {
+        let now = moment().format('YYYY-MM-DD');
+        this.apiService.getSummaries(now, now).subscribe(res => {
+            res = res.data[0];
+            this.grandTotal = res['grand_total'];
+            console.log(res['grand_total']);
             refresher.complete();
-        }, 2000);
+        });
     }
 
 }
