@@ -5,6 +5,14 @@
     margin-right: 10rem;
 }
 
+#login-btn {
+    width: 60%;
+    position: fixed;
+    bottom: 40%;
+    left: 18%;
+    right: 18%;
+}
+
 #left-menu-header {
     background-color: #3d5afe;
     color: white;
