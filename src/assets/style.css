@@ -6,11 +6,28 @@
 }
 
 #left-menu-header {
-    background-color: #007aff;
+    background-color: #3d5afe;
+    color: white;
     height: 20%;
 }
 
 #user-photo {
     width: 20%;
     height: 20%;
+}
+
+.toolbar-background {
+    background-color: #042733;
+}
+
+.toolbar-title {
+    color: white
+}
+
+.btn {
+    background-color: #3d5afe
+}
+
+ion-icon[name='menu'] {
+    color: white;
 }
