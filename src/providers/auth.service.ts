@@ -7,4 +7,8 @@ export class AuthService {
 
     isLoggedIn: boolean = false;
     userInfo: any;
+
+    constructor() {
+
+    }
 }

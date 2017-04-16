@@ -1,4 +1,4 @@
-<ion-menu [content]="mycontent">
+<ion-menu [content]="content">
     <ion-header id="left-menu-header" padding (click)="presentModal()">
         <ion-avatar item-left>
             <img src="{{userInfo?.photo}}" id="user-photo">
@@ -26,4 +26,5 @@
         </ion-list>
     </ion-content>
 </ion-menu>
-<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+<ion-nav #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>

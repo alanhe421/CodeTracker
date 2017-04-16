@@ -1,5 +1,5 @@
-import {Component} from "@angular/core";
-import {AlertController, NavController, ModalController} from "ionic-angular";
+import {Component, ViewChild} from "@angular/core";
+import {AlertController, NavController, ModalController, Nav} from "ionic-angular";
 import {ProjectPage} from "../project/project";
 import {WelcomePage} from "../welcome/welcome";
 import {ApiService} from "../../providers/api.service";
@@ -15,6 +15,7 @@ import {UseragentsPage} from "../useragents/useragents";
     templateUrl: 'home.html'
 })
 export class HomePage {
+    @ViewChild(Nav) nav: Nav;
     rootPage: any = DashboardPage;
     pages: Array<{title: string, component: any, icon: string}>;
     aboutPage = AboutPage;
@@ -41,8 +42,11 @@ export class HomePage {
         ];
     }
 
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
     openPage(page: any) {
-        this.navCtrl.push(page);
+        // this.navCtrl.push(page);
+        this.nav.setRoot(page);
     }
 
     //退出

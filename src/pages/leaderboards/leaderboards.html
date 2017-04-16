@@ -20,7 +20,8 @@
             <span>{{item?.user?.display_name}}</span>
         </ion-card-header>
         <ion-card-content>
-            Hours Coded:{{item?.running_total?.human_readable_total}},Daily Average:{{item?.running_total?.human_readable_daily_average}}
+            Hours Coded:{{item?.running_total?.human_readable_total}},Daily
+            Average:{{item?.running_total?.human_readable_daily_average}}
             <div>
                 <span *ngFor="let lang of item?.running_total?.languages">
                     {{lang.name}}
