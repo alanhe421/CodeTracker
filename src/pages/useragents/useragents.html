@@ -1,7 +1,7 @@
 <!--
-  Generated template for the Project page.
+  Generated template for the Useragents page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
@@ -9,20 +9,18 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Projects</ion-title>
+        <ion-title>useragents</ion-title>
     </ion-navbar>
-
 </ion-header>
 
+
 <ion-content padding>
-    <ion-card *ngFor="let item of items" (click)="showCommits(item['id'])">
+    <ion-card *ngFor="let item of items">
         <ion-card-header>
-            {{item?.name}}
+            {{item?.editor}}
         </ion-card-header>
-
         <ion-card-content>
-            {{item?.public_url}}
+            {{item?.last_seen}}
         </ion-card-content>
-
     </ion-card>
 </ion-content>
