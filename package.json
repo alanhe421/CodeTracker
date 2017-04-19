@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "codetime",
+  "author": "he",
+  "homepage": "http://1991421.cn/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -38,7 +38,7 @@
     "zone.js": "0.7.2"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "1.3.3",
+    "@ionic/app-scripts": "1.3.4",
     "typescript": "~2.2.1"
   },
   "cordovaPlugins": [

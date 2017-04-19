@@ -18,10 +18,12 @@
 
 ## resources:
 
+- [ionic2](https://github.com/driftyco/ionic)
+- [angular2](https://angular.io/)
+- [echarts](http://echarts.baidu.com/)
 - [wakatime-API](https://wakatime.com/developers)
 - [ionic2-auth0](https://auth0.com/docs/quickstart/native/ionic2)
-- [echarts](http://echarts.baidu.com/)
-- [ionic2](https://github.com/driftyco/ionic)
+
 
 
 ------
@@ -31,11 +33,12 @@
 + CORS,跨域问题,chrome需要安装[插件Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
 + 集成echarts
 
-
 ## Commands
 
 ```
 # 初始化开发环境
+
+npm install -g ionic cordova
 
 npm i
 
