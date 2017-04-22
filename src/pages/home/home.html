@@ -9,17 +9,32 @@
     </ion-header>
     <ion-content>
         <ion-list>
-            <button menuClose ion-item icon-left *ngFor="let page of pages" (click)="openPage(page.component)">
-                <ion-icon name="{{page.icon}}"></ion-icon>
-                {{page.title}}
+            <button menuClose ion-item icon-left (click)="openPage(dashPage)" detail-none>
+                <ion-icon class="iconfont icon-dashboard"></ion-icon>
+                Dashboard
+            </button>
+
+            <button menuClose ion-item icon-left (click)="openPage(projectsPage)" detail-none>
+                <ion-icon class="iconfont icon-project"></ion-icon>
+                Projects
+            </button>
+
+            <button menuClose ion-item icon-left (click)="openPage(leaderBoardsPage)" detail-none>
+                <ion-icon class="iconfont icon-jiangbei"></ion-icon>
+                Leaderboards
+            </button>
+            <button menuClose ion-item icon-left (click)="openPage(userAgentsPage)" detail-none>
+                <ion-icon class="iconfont icon-ruanjian"></ion-icon>
+                UserAgents
             </button>
         </ion-list>
         <ion-list>
-            <button menuClose ion-item icon-left (click)="openPage(aboutPage)">
+
+            <button menuClose ion-item icon-left (click)="openPage(aboutPage)" detail-none>
                 <ion-icon name="alert"></ion-icon>
                 About
             </button>
-            <button menuClose ion-item icon-left (click)="logout()">
+            <button menuClose ion-item icon-left (click)="logout()" detail-none>
                 <ion-icon name="exit"></ion-icon>
                 Logout
             </button>

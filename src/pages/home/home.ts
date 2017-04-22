@@ -17,8 +17,13 @@ import {UseragentsPage} from "../useragents/useragents";
 export class HomePage {
     @ViewChild(Nav) nav: Nav;
     rootPage: any = DashboardPage;
-    pages: Array<{title: string, component: any, icon: string}>;
-    aboutPage = AboutPage;
+    // pages: Array<{title: string, component: any, icon: string}>;
+
+    dashPage: any = DashboardPage;
+    projectsPage: any = ProjectPage;
+    leaderBoardsPage: any = LeaderboardsPage;
+    userAgentsPage: any = UseragentsPage;
+    aboutPage: any = AboutPage;
     userInfo: any;
 
     constructor(public navCtrl: NavController, private apiService: ApiService,
@@ -26,20 +31,20 @@ export class HomePage {
                 public modalCtrl: ModalController, private alertCtrl: AlertController) {
         this.userInfo = this.authService.userInfo;
 
-        this.pages = [
-            {
-                title: 'Dashboard', component: DashboardPage, icon: 'code'
-            },
-            {
-                title: 'Projects', component: ProjectPage, icon: 'code'
-            },
-            {
-                title: 'Leaderboards', component: LeaderboardsPage, icon: 'star'
-            },
-            {
-                title: 'UserAgents', component: UseragentsPage, icon: 'star'
-            }
-        ];
+        // this.pages = [
+        //     {
+        //         title: 'Dashboard', component: DashboardPage, icon: 'code'
+        //     },
+        //     {
+        //         title: 'Projects', component: ProjectPage, icon: 'code'
+        //     },
+        //     {
+        //         title: 'Leaderboards', component: LeaderboardsPage, icon: 'star'
+        //     },
+        //     {
+        //         title: 'UserAgents', component: UseragentsPage, icon: 'star'
+        //     }
+        // ];
     }
 
     // Reset the content nav to have just this page
