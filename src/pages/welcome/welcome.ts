@@ -17,7 +17,7 @@ import {HomePage} from "../home/home";
 })
 export class WelcomePage {
 
-    apiKey: string = '';
+    apiKey: string = '761c5595-1fae-4f74-abdc-f822170d8793';
     loading: Loading;
 
     constructor(public navCtrl: NavController,
