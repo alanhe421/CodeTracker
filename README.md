@@ -4,6 +4,8 @@
 
 可视化展示编码活动
 
+![图标](./resources/ios/icon/icon-40%403x.png)
+
 ## [What is wakatime?](https://wakatime.com/about)
 
 **wakatime**是个全自动化的时间追踪工具,依赖于大量的IDE插件及文本编辑器，可以对我们从事coding活动所花费的时间进行可视化展示，让你明白在那些时间里，都做了什么。
