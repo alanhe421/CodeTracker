@@ -14,20 +14,26 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card *ngFor="let item of data" (click)="openDetail(item)">
-        <ion-card-header>
-            {{item?.rank}}
-            <span>{{item?.user?.display_name}}</span>
-        </ion-card-header>
-        <ion-card-content>
-            Hours Coded:{{item?.running_total?.human_readable_total}},Daily
-            Average:{{item?.running_total?.human_readable_daily_average}}
-            <div>
-                <span *ngFor="let lang of item?.running_total?.languages">
-                    {{lang.name}}
-                </span>
-            </div>
-        </ion-card-content>
-    </ion-card>
+    <ion-list>
+        <ion-item *ngFor="let item of data;let i = index;" (click)="openDetail(item)">
+            <ion-thumbnail item-left>
+                <img src="{{item?.user?.photo}}">
+            </ion-thumbnail>
+            <h2>{{item?.rank}},{{item?.user?.display_name}}
+            </h2>
+            <img *ngIf="i==0" src="assets/icon/no1.svg"
+                 class="icon-medals">
+            <img *ngIf="i==1" src="assets/icon/no2.svg"
+                 class="icon-medals">
+            <img *ngIf="i==2" src="assets/icon/no3.svg"
+                 class="icon-medals">
+            <p>
+                Daily
+                Average:{{item?.running_total?.human_readable_daily_average}}
+            </p>
+
+        </ion-item>
+
+    </ion-list>
 
 </ion-content>

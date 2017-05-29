@@ -1,8 +1,9 @@
-import {Component, ViewChild, ElementRef} from "@angular/core";
-import {NavParams, LoadingController, Loading} from "ionic-angular";
+import {Component, ElementRef, ViewChild} from "@angular/core";
+import {Loading, LoadingController, NavParams} from "ionic-angular";
 import {ApiService} from "../../providers/api.service";
 import * as echarts from "echarts";
 import * as moment from "moment";
+declare const Wechat: any;
 /*
  Generated class for the Stats page.
 
@@ -18,6 +19,8 @@ export class StatsPage {
     range: string;
     @ViewChild('languagesUsed') languagesUsed: ElementRef;//使用语言
     @ViewChild('editorsUsed') editorsUsed: ElementRef;//编辑器
+    @ViewChild('systemsUsed') systemsUsed: ElementRef;//操作系统
+
     loading: Loading;
     data: any;
     grandTotal: any;
@@ -41,6 +44,7 @@ export class StatsPage {
             this.data = res.data;
             this.initLanguageUsed(res.data.languages);
             this.initEditors(res.data.editors);
+            this.initSystemsUsed(res.data.operating_systems);
             this.loading.dismiss();
         });
         let now = moment().format('YYYY-MM-DD');
@@ -152,6 +156,53 @@ export class StatsPage {
     }
 
 
+    /**
+     *
+     * @param systems
+     */
+    initSystemsUsed(systems: Array<any>): void {
+        let container = this.systemsUsed.nativeElement;
+        let myChart = echarts.init(container);
+        let option = {
+            title: {
+                text: 'System',
+                left: 'center',
+                top: 'center',
+            },
+            legend: {
+                show: true,
+                bottom: 0,
+                data: []
+            },
+            series: [
+                {
+                    name: '系统',
+                    type: 'pie',
+                    radius: ['50%', '90%'],
+                    data: [],
+                    label: {
+                        normal: {
+                            position: 'inside'
+                        }
+                    },
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        for (let item of systems) {
+            option.series[0].data.push({value: item['total_seconds'], name: item['name']});
+            option.legend.data.push(item['name']);
+        }
+
+        myChart.setOption(option);
+    }
+
     //刷新
     doRefresh(refresher) {
         let now = moment().format('YYYY-MM-DD');
@@ -162,5 +213,6 @@ export class StatsPage {
             refresher.complete();
         });
     }
+
 
 }

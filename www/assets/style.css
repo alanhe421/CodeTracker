@@ -1,0 +1,48 @@
+#copy-right {
+    position: fixed;
+    bottom: 4rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
+
+#login-btn {
+    width: 60%;
+    position: fixed;
+    bottom: 40%;
+    left: 18%;
+    right: 18%;
+}
+
+#left-menu-header {
+    background-color: #3d5afe;
+    color: white;
+    height: 20%;
+}
+
+#user-photo {
+    width: 20%;
+    height: 20%;
+}
+
+.toolbar-background {
+    background-color: #042733;
+}
+
+.toolbar-title {
+    color: white
+}
+
+.btn {
+    background-color: #3d5afe
+}
+
+ion-icon[name='menu'] {
+    color: white;
+}
+
+.icon-medals {
+    width: 3rem;
+    position: relative;
+    float: right;
+    top: -1.6rem;
+}

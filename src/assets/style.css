@@ -39,3 +39,10 @@
 ion-icon[name='menu'] {
     color: white;
 }
+
+.icon-medals {
+    width: 3rem;
+    position: relative;
+    float: right;
+    top: -1.6rem;
+}

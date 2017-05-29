@@ -25,13 +25,13 @@
 - [ionic2-auth0](https://auth0.com/docs/quickstart/native/ionic2)
 
 
-
 ------
 ## 涉及技术点
 
 + ionic2使用(menu,tabs,nav,native-plugins,http)
 + CORS,跨域问题,chrome需要安装[插件Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
 + 集成echarts
++ 微信分享
 
 ## Commands
 
@@ -45,7 +45,13 @@ npm i
 # 浏览器运行
 ionic serve
 
-# 安卓版打包
-ionic build android --prod 
+# 构建打包
+ionic cordova build android --prod 
+
+# 开发环境真机运行
+ionic cordova run android --livereload -c -s
+
+#模拟器运行
+ionic emulate ios --livereload -c -s
 
 ```
