@@ -14,10 +14,16 @@
 
 
 <ion-content padding>
+    <div text-center id="leaderdetail">
+        <ion-img width="80" height="80" [src]="leader.user.photo"></ion-img>
+        <div>{{leader.rank}}
+            <img *ngIf="leader.rank==1" src="assets/icon/no1.svg" class="icon-medals">
+        </div>
+        <div>
+            {{leader.user.display_name}}
 
-    <ion-img width="80" height="80" [src]="leader.user.photo"></ion-img>
-    <div>{{leader.rank}}</div>
-    {{leader.user.display_name}}
+        </div>
+    </div>
     <div #languagesUsed id="languages-used" style="width: 100%;height: 300px">
 
 

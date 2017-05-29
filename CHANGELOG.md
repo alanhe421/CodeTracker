@@ -5,5 +5,6 @@
    + add ~~angular2-jwt~~
    + etc
    + wechart share
+   + lazy load
    
    

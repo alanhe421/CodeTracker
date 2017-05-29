@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {NavController, NavParams} from "ionic-angular";
 import {StatsPage} from "../stats/stats";
-
+declare var Wechat: any;
 /*
  Generated class for the Dashboard page.
 
@@ -28,4 +28,14 @@ export class DashboardPage {
         console.log('ionViewDidLoad DashboardPage');
     }
 
+    share() {
+        Wechat.share({
+            text: "This is just a plain string",
+            scene: Wechat.Scene.TIMELINE   // share to Timeline
+        }, function () {
+            alert("Success");
+        }, function (reason) {
+            alert("Failed: " + reason);
+        });
+    }
 }

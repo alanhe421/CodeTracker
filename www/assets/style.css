@@ -5,6 +5,11 @@
     margin-right: 10rem;
 }
 
+#copy-right > a {
+    color: #fbb040 !important;
+    text-decoration: none;
+}
+
 #login-btn {
     width: 60%;
     position: fixed;
@@ -40,9 +45,13 @@ ion-icon[name='menu'] {
     color: white;
 }
 
-.icon-medals {
-    width: 3rem;
+#leaderboards .icon-medals {
+    width: 3.2rem;
     position: relative;
     float: right;
     top: -1.6rem;
+}
+
+#leaderdetail .icon-medals {
+    width: 3.2rem;
 }

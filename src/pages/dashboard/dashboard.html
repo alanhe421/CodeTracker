@@ -10,10 +10,13 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>Dashboard</ion-title>
+        <!--<button (click)="share()">-->
+            <!--<ion-icon name="share"></ion-icon>-->
+        <!--</button>-->
     </ion-navbar>
 </ion-header>
 <ion-content padding>
     <ion-tabs tabsPlacement="top">
-        <ion-tab tabTitle="7 days" [root]="tab1" [rootParams]="{range:'last_7_days'}"></ion-tab>
+        <ion-tab tabTitle="seven days" [root]="tab1" [rootParams]="{range:'last_7_days'}"></ion-tab>
     </ion-tabs>
 </ion-content>
