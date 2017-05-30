@@ -1,4 +1,4 @@
-# timetracker
+# Codetracker
 
 ## a wakatime client
 
