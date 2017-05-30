@@ -1,5 +1,5 @@
-import {NgModule, ErrorHandler} from "@angular/core";
-import {IonicApp, IonicModule, IonicErrorHandler} from "ionic-angular";
+import {ErrorHandler, NgModule} from "@angular/core";
+import {IonicApp, IonicErrorHandler, IonicModule} from "ionic-angular";
 import {AuthApp} from "./app.component";
 import {AboutPage} from "../pages/about/about";
 import {ContactPage} from "../pages/contact/contact";
@@ -71,7 +71,9 @@ import {UseragentsPage} from "../pages/useragents/useragents";
         {
             provide: ErrorHandler,
             useClass: IonicErrorHandler
-        }, ApiService, AuthService, SplashScreen, StatusBar, AppVersion]
+        }, ApiService, AuthService, SplashScreen, StatusBar,
+        AppVersion,
+    ]
 })
 export class AppModule {
 }

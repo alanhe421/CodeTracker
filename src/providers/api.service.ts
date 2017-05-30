@@ -36,7 +36,7 @@ export class ApiService {
      * @returns {Observable<Response>}
      */
     getCommits(projectId: string) {
-        return this.http.get(`${WAKATIME_API_URL}/users/current/projects/${projectId}/commits`).map(res => res.json());
+        return this.http.get(`${WAKATIME_API_URL}/users/current/projects/${projectId}/commits`, this.options).map(res => res.json());
     }
 
     /**

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="cn.he.codetracker" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
-    <name>codetime</name>
+    <name>codetracker</name>
     <description>An wakatime app.</description>
     <author email="he@1991421.cn" href="http://1991421.cn/">he</author>
     <content srcProfilePage="index.html"/>

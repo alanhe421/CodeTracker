@@ -18,6 +18,8 @@
         <ion-img width="80" height="80" [src]="leader.user.photo"></ion-img>
         <div>{{leader.rank}}
             <img *ngIf="leader.rank==1" src="assets/icon/no1.svg" class="icon-medals">
+            <img *ngIf="leader.rank==2" src="assets/icon/no2.svg" class="icon-medals">
+            <img *ngIf="leader.rank==3" src="assets/icon/no3.svg" class="icon-medals">
         </div>
         <div>
             {{leader.user.display_name}}

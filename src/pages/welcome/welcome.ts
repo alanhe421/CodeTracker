@@ -17,7 +17,7 @@ import {LocalSettingService} from "../../providers/localsetting.service";
 })
 export class WelcomePage {
 
-    apiKey: string = '761c5595-1fae-4f74-abdc-f822170d8793';
+    apiKey: string = '';
     loading: Loading;
 
     constructor(public navCtrl: NavController,

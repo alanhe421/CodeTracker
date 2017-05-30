@@ -18,4 +18,8 @@ export class AboutPage {
             this.versionNumber = versionNumber;
         });
     }
+
+    contactMe() {
+        document.location.href = `mailto:he@1991421.cn?Subject=codetracker&body=Application version:${this.versionNumber}`;
+    }
 }

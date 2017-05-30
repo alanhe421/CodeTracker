@@ -10,9 +10,14 @@
 </ion-header>
 
 <ion-content padding>
-    <div text-center>
-        <h4>
-            Version {{versionNumber}}
-        </h4>
-    </div>
+    <ion-list>
+        <ion-item>
+            <h2>Version</h2>
+            <p>{{versionNumber}}</p>
+        </ion-item>
+        <ion-item (click)="contactMe()">
+            <h2>Developer:He</h2>
+            <p>he@1991421.cn</p>
+        </ion-item>
+    </ion-list>
 </ion-content>
