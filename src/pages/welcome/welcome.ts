@@ -1,9 +1,9 @@
 import {Component} from "@angular/core";
-import {NavController, LoadingController, Loading} from "ionic-angular";
-import {Base64} from "js-base64";
+import {Loading, LoadingController, NavController} from "ionic-angular";
 import {ApiService} from "../../providers/api.service";
 import {AuthService} from "../../providers/auth.service";
 import {HomePage} from "../home/home";
+import {LocalSettingService} from "../../providers/localsetting.service";
 /*
  Generated class for the Welcome page.
 
@@ -35,13 +35,14 @@ export class WelcomePage {
 
     saveKey() {
         this.loading.present();
-        localStorage.setItem('Authorization', Base64.encode(this.apiKey));
+        LocalSettingService.setAPIKey(this.apiKey);
         this.apiService.createAuthorizationHeader();
 
         this.apiService.getUsers().subscribe(res => {
             this.authService.isLoggedIn = true;
             this.authService.userInfo = res.data;
             this.loading.dismiss();
+            LocalSettingService.setUserInfo(this.authService.userInfo);
             this.navCtrl.setRoot(HomePage);
         })
     }

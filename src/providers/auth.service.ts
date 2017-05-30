@@ -1,4 +1,5 @@
 import {Injectable} from "@angular/core";
+import {LocalSettingService} from "./localsetting.service";
 /**
  * Created by He on 4/9/17.
  */
@@ -9,6 +10,9 @@ export class AuthService {
     userInfo: any;
 
     constructor() {
-
+        if (LocalSettingService.getAPIKey()) {
+            this.isLoggedIn = true;
+            this.userInfo = LocalSettingService.getUserInfo();
+        }
     }
 }

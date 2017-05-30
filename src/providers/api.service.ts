@@ -1,6 +1,7 @@
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
+import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
+import {LocalSettingService} from "./localsetting.service";
 
 /**
  * Created by He on 3/3/17.
@@ -14,12 +15,14 @@ export class ApiService {
     options: any;
 
     constructor(private http: Http) {
-
+        if (LocalSettingService.getAPIKey()) {
+            this.createAuthorizationHeader();
+        }
     }
 
     createAuthorizationHeader() {
         let headers = new Headers({'Content-Type': 'application/json'});
-        headers.append('Authorization', `Basic ${localStorage.getItem('Authorization')}`);
+        headers.append('Authorization', `Basic ${LocalSettingService.getAPIKey()}`);
         this.options = new RequestOptions({headers: headers});
     }
 
