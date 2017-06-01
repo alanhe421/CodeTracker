@@ -36,7 +36,10 @@ export class ApiService {
      * @returns {Observable<Response>}
      */
     getCommits(projectId: string) {
-        return this.http.get(`${WAKATIME_API_URL}/users/current/projects/${projectId}/commits`, this.options).map(res => res.json());
+        return this.http.get(`${WAKATIME_API_URL}/users/current/projects/${projectId}/commits`, this.options)
+            .map(res => res.json()).catch((res) =>
+                this.handleError(res)
+            )
     }
 
     /**
@@ -50,7 +53,9 @@ export class ApiService {
         if (branches) {
             url += `&branches=${branches}`;
         }
-        return this.http.get(url, this.options).map(res => res.json());
+        return this.http.get(url, this.options).map(res => res.json()).catch((res) =>
+            this.handleError(res)
+        );
 
     }
 
@@ -60,7 +65,9 @@ export class ApiService {
      */
     getHeartbeats(date: string) {
         let url = `${WAKATIME_API_URL}/users/current/heartbeats?date=${date}`;
-        return this.http.get(url, this.options).map(res => res.json());
+        return this.http.get(url, this.options).map(res => res.json()).catch((res) =>
+            this.handleError(res)
+        );
     }
 
     /**
@@ -74,7 +81,9 @@ export class ApiService {
         if (page) {
             url += `page=${page}&`
         }
-        return this.http.get(url, this.options).map(res => res.json());
+        return this.http.get(url, this.options).map(res => res.json()).catch((res) =>
+            this.handleError(res)
+        );
     }
 
     /**
@@ -82,7 +91,9 @@ export class ApiService {
      * @returns {Observable<R>}
      */
     getProjects() {
-        return this.http.get(`${WAKATIME_API_URL}/users/current/projects`, this.options).map(res => res.json());
+        return this.http.get(`${WAKATIME_API_URL}/users/current/projects`, this.options).map(res => res.json()).catch((res) =>
+            this.handleError(res)
+        );
     }
 
 
@@ -102,7 +113,9 @@ export class ApiService {
         if (project) {
             url += `project=${project}&`
         }
-        return this.http.get(url, this.options).map(res => res.json());
+        return this.http.get(url, this.options).map(res => res.json()).catch((res) =>
+            this.handleError(res)
+        );
     }
 
     /**
@@ -116,7 +129,9 @@ export class ApiService {
         if (branches) {
             url += `branches=${branches}&`
         }
-        return this.http.get(url, this.options).map(res => res.json());
+        return this.http.get(url, this.options).map(res => res.json()).catch((res) =>
+            this.handleError(res)
+        );
     }
 
 
@@ -124,22 +139,31 @@ export class ApiService {
      * A single user.
      */
     getUsers() {
-        return this.http.get(`${WAKATIME_API_URL}/users/current`, this.options).map(res => res.json());
+        return this.http.get(`${WAKATIME_API_URL}/users/current`, this.options).map(res => res.json()).catch((res) =>
+            this.handleError(res)
+        );
     }
 
     /**
      * List of plugins which have sent data for this user.
      */
     getUserAgents() {
-        return this.http.get(`${WAKATIME_API_URL}/users/current/user_agents`, this.options).map(res => res.json());
+        return this.http.get(`${WAKATIME_API_URL}/users/current/user_agents`, this.options).map(res => res.json()).catch((res) =>
+            this.handleError(res)
+        );
     }
 
-
+    /**
+     * 异常处理
+     * @param error
+     * @returns {any}
+     */
     private handleError(error: Response | any) {
         // In a real world app, you might use a remote logging infrastructure
         let errMsg: string;
         if (error instanceof Response) {
             const body = error.json() || '';
+            // const code = body.code;//错误码
             const err = body.error || JSON.stringify(body);
             errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
         } else {
