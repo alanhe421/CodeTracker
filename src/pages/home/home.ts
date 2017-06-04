@@ -70,7 +70,7 @@ export class HomePage {
                     handler: () => {
                         this.navCtrl.setRoot(WelcomePage);
                         localStorage.removeItem('Authorization');
-                        this.apiService.delAuthorizationHeader();
+                        // this.apiService.delAuthorizationHeader();
                     }
                 }
             ]

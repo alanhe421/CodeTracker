@@ -20,8 +20,8 @@
 
 ## resources:
 
-- [ionic2](https://github.com/driftyco/ionic)
-- [angular2](https://angular.io/)
+- [ionic2(v3)](https://github.com/driftyco/ionic)
+- [angular4](https://angular.io/)
 - [echarts](http://echarts.baidu.com/)
 - [wakatime-API](https://wakatime.com/developers)
 - [ionic2-auth0](https://auth0.com/docs/quickstart/native/ionic2)

@@ -166,6 +166,8 @@ export class ApiService {
             const body = error.json() || '';
             // const code = body.code;//错误码
             const err = body.error || JSON.stringify(body);
+            console.log('err');
+            console.log(error);
             this.errorService.updateError(err);
             errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
         } else {

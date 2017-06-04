@@ -13,7 +13,7 @@ import {HomePage} from "../pages/home/home";
 })
 export class AuthApp {
     rootPage: any = WelcomePage;
-    @ViewChild('myNav') nav: NavController
+    @ViewChild('myNav') nav: NavController;
 
     constructor(platform: Platform, public splashScreen: SplashScreen, public statusBar: StatusBar,
                 private authService: AuthService,
@@ -29,7 +29,7 @@ export class AuthApp {
             }
             // Schedule a token refresh on app start up
             // auth.startupTokenRefresh();
-            this.errorService.error$.subscribe((res) => {
+            this.errorService.error$.distinctUntilChanged().subscribe((res) => {
                 this.authService.isLoggedIn = false;
                 this.presentToast();
                 this.nav.setRoot(WelcomePage);
