@@ -28,9 +28,13 @@ export class UseragentsPage {
         console.log('ionViewDidLoad Useragents');
         this.loading.present();
         this.apiService.getUserAgents().subscribe(res => {
-            this.items = res.data;
-            this.loading.dismiss();
-        })
+                this.items = res.data;
+                this.loading.dismiss();
+            },
+            error => {
+                this.loading.dismiss();
+            }
+        )
     }
 
 }

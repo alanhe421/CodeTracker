@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {NavController, LoadingController, Loading} from "ionic-angular";
+import {Loading, LoadingController, NavController} from "ionic-angular";
 import {ApiService} from "../../providers/api.service";
 import {LeaderdetailPage} from "../leaderdetail/leaderdetail";
 
@@ -34,11 +34,15 @@ export class LeaderboardsPage {
 
     loadMore() {
         this.loading.present();
-        this.apiService.getLeaders(null,this.page).subscribe(res => {
-            this.data = res.data;
-            this.page += 1;
-            this.loading.dismiss();
-        })
+        this.apiService.getLeaders(null, this.page).subscribe(res => {
+                this.data = res.data;
+                this.page += 1;
+                this.loading.dismiss();
+            },
+            error => {
+                this.loading.dismiss();
+            }
+        )
     }
 
     openDetail(leader: any) {

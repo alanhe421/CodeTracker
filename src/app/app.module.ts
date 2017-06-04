@@ -21,6 +21,7 @@ import {LeaderboardsPage} from "../pages/leaderboards/leaderboards";
 import {LeaderdetailPage} from "../pages/leaderdetail/leaderdetail";
 import {AuthService} from "../providers/auth.service";
 import {UseragentsPage} from "../pages/useragents/useragents";
+import {ErrorService} from "../providers/error.service";
 // let storage: Storage = new Storage();
 
 // export function getAuthHttp(http) {
@@ -71,9 +72,9 @@ import {UseragentsPage} from "../pages/useragents/useragents";
         {
             provide: ErrorHandler,
             useClass: IonicErrorHandler
-        }, ApiService, AuthService, SplashScreen, StatusBar,
-        AppVersion,
-    ]
+        },
+        ApiService, AuthService, ErrorService, SplashScreen, StatusBar,
+        AppVersion]
 })
 export class AppModule {
 }

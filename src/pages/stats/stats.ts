@@ -3,6 +3,7 @@ import {Loading, LoadingController, NavParams} from "ionic-angular";
 import {ApiService} from "../../providers/api.service";
 import * as echarts from "echarts";
 import * as moment from "moment";
+import {ErrorService} from "../../providers/error.service";
 declare const Wechat: any;
 /*
  Generated class for the Stats page.
@@ -26,7 +27,7 @@ export class StatsPage {
     grandTotal: any;
 
     constructor(public navParams: NavParams,
-                private apiService: ApiService, public loadingCtrl: LoadingController) {
+                private apiService: ApiService, public loadingCtrl: LoadingController, private errorService: ErrorService) {
         this.range = this.navParams.get('range');
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
@@ -40,21 +41,25 @@ export class StatsPage {
         console.log('ionViewDidLoad StatsPage');
         this.loading.present();
         this.apiService.getStats(this.range).subscribe(res => {
-            console.log(res);
-            this.data = res.data;
-            this.initLanguageUsed(res.data.languages);
-            this.initEditors(res.data.editors);
-            this.initSystemsUsed(res.data.operating_systems);
-            this.loading.dismiss();
-        });
+                console.log(res);
+                this.data = res.data;
+                this.initLanguageUsed(res.data.languages);
+                this.initEditors(res.data.editors);
+                this.initSystemsUsed(res.data.operating_systems);
+                this.loading.dismiss();
+            },
+            error => {
+                this.loading.dismiss();
+            }
+        );
         let now = moment().format('YYYY-MM-DD');
 
         this.apiService.getSummaries(now, now).subscribe(res => {
-            res = res.data[0];
-            this.grandTotal = res['grand_total'];
-            console.log(res['grand_total']);
-        });
-
+                res = res.data[0];
+                this.grandTotal = res['grand_total'];
+                console.log(res['grand_total']);
+            }
+        );
     }
 
 

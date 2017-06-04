@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ApiService} from "../../providers/api.service";
-import {NavController, LoadingController, Loading} from "ionic-angular";
+import {Loading, LoadingController, NavController} from "ionic-angular";
 import {CommitsPage} from "../commits/commits";
 
 /*
@@ -29,10 +29,14 @@ export class ProjectPage {
     ionViewDidLoad() {
         this.loading.present();
         this.apiService.getProjects().subscribe(res => {
-            console.log(res);
-            this.items = res.data;
-            this.loading.dismiss();
-        });
+                console.log(res);
+                this.items = res.data;
+                this.loading.dismiss();
+            },
+            error => {
+                this.loading.dismiss();
+            }
+        );
         console.log('ionViewDidLoad ProjectPage');
     }
 

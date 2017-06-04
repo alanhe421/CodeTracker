@@ -2,6 +2,7 @@ import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {LocalSettingService} from "./localsetting.service";
+import {ErrorService} from "./error.service";
 
 /**
  * Created by He on 3/3/17.
@@ -14,7 +15,7 @@ export class ApiService {
 
     options: any;
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private errorService: ErrorService) {
         if (LocalSettingService.getAPIKey()) {
             this.createAuthorizationHeader();
         }
@@ -165,6 +166,7 @@ export class ApiService {
             const body = error.json() || '';
             // const code = body.code;//错误码
             const err = body.error || JSON.stringify(body);
+            this.errorService.updateError(err);
             errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
         } else {
             errMsg = error.message ? error.message : error.toString();
