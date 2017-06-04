@@ -18,9 +18,11 @@
     <ion-card *ngFor="let item of items">
         <ion-card-header>
             {{item?.editor}}
+            <ion-badge *ngIf="item.os=='Windows'" item-right>{{item?.os}}</ion-badge>
+            <ion-badge color="light" *ngIf="item.os=='Mac'" item-right>{{item?.os}}</ion-badge>
         </ion-card-header>
         <ion-card-content>
-            {{item?.last_seen}}
+            {{item?.last_seen|date:'y-MM-dd HH:mm:ss'}}
         </ion-card-content>
     </ion-card>
 </ion-content>
