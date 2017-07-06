@@ -21,7 +21,7 @@
 ## resources:
 
 - [ionic2(v3)](https://github.com/driftyco/ionic)
-- [angular4](https://angular.io/)
+- [angular4](ttps://angular.io/)
 - [echarts](http://echarts.baidu.com/)
 - [wakatime-API](https://wakatime.com/developers)
 - [ionic2-auth0](https://auth0.com/docs/quickstart/native/ionic2)
@@ -54,6 +54,8 @@ ionic cordova build android --prod
 ionic cordova run android --livereload -c -s
 
 #模拟器运行
-ionic emulate ios --livereload -c -s
+ionic cordova emulate ios --livereload -c -s
 
 ```
+## 入驻商店
++ 腾讯应用宝
