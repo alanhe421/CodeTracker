@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="cn.he.codetracker" version="1.1.0" xmlns="http://www.w3.org/ns/widgets">
-    <name>Codetracker</name>
+    <name>CodeTracker</name>
     <description>An wakatime app.</description>
     <author email="he@1991421.cn" href="http://1991421.cn/">he</author>
     <content srcProfilePage="index.html" />
@@ -86,7 +86,6 @@
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
     <icon src="resources/android/icon/drawable-xhdpi-icon.png" />
-    <engine name="android" spec="^6.2.3" />
     <engine name="ios" spec="^4.4.0" />
     <plugin name="cordova-plugin-app-version" spec="~0.1.9" />
     <plugin name="cordova-plugin-console" spec="1.0.5" />

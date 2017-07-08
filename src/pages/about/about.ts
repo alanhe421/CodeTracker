@@ -20,6 +20,6 @@ export class AboutPage {
     }
 
     contactMe() {
-        document.location.href = `mailto:he@1991421.cn?Subject=codetracker&body=Application version:${this.versionNumber}`;
+        document.location.href = `mailto:he@1991421.cn?Subject=CodeTracker&body=Application version:${this.versionNumber}`;
     }
 }
