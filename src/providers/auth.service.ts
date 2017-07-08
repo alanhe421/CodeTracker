@@ -10,7 +10,7 @@ export class AuthService {
     userInfo: any;
 
     constructor() {
-        if (LocalSettingService.getAPIKey()) {
+        if (LocalSettingService.getAuthorization()) {
             this.isLoggedIn = true;
             this.userInfo = LocalSettingService.getUserInfo();
         }

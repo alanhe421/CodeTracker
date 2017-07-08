@@ -11,11 +11,10 @@
 }
 
 #login-btn {
-    width: 60%;
-    position: fixed;
-    bottom: 40%;
-    left: 18%;
-    right: 18%;
+
+}
+.info{
+    color: #8e9093
 }
 
 #left-menu-header {
@@ -35,10 +34,6 @@
 
 .toolbar-title {
     color: white
-}
-
-.btn {
-    background-color: #3d5afe
 }
 
 ion-icon[name='menu'] {

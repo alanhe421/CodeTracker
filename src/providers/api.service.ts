@@ -8,23 +8,25 @@ import {ErrorService} from "./error.service";
  * Created by He on 3/3/17.
  * 请求API
  */
+// oauth
 export const WAKATIME_API_URL = 'https://wakatime.com/api/v1';
 export const CLIENT_ID = 'YAfge95KBCv2GSiXY0F5oiPK';
-export const REDIRECT_URI='http://localhost:8100';
+export const REDIRECT_URI = 'http://localhost:8100';
+
 @Injectable()
 export class ApiService {
 
     options: any;
 
     constructor(private http: Http, private errorService: ErrorService) {
-        if (LocalSettingService.getAPIKey()) {
+        if (LocalSettingService.getAuthorization()) {
             this.createAuthorizationHeader();
         }
     }
 
     createAuthorizationHeader() {
         let headers = new Headers({'Content-Type': 'application/json'});
-        headers.append('Authorization', `Basic ${LocalSettingService.getAPIKey()}`);
+        headers.append('Authorization', `${LocalSettingService.getAuthorization()}`);
         this.options = new RequestOptions({headers: headers});
     }
 
