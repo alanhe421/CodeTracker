@@ -53,9 +53,10 @@ ionic cordova build android --prod
 # 开发环境真机运行
 ionic cordova run android --livereload -c -s
 
-#模拟器运行
+# 模拟器运行
 ionic cordova emulate ios --livereload -c -s
 
 ```
 ## 入驻商店
-+ 腾讯应用宝
+
++ [腾讯应用宝](http://a.app.qq.com/o/simple.jsp?pkgname=cn.he.codetracker)
