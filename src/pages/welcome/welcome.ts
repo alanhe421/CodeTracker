@@ -1,9 +1,11 @@
 import {Component} from "@angular/core";
 import {Loading, LoadingController, NavController} from "ionic-angular";
-import {ApiService} from "../../providers/api.service";
+import {ApiService, CLIENT_ID, REDIRECT_URI} from "../../providers/api.service";
 import {AuthService} from "../../providers/auth.service";
 import {HomePage} from "../home/home";
 import {LocalSettingService} from "../../providers/localsetting.service";
+import {InAppBrowser} from "@ionic-native/in-app-browser";
+
 /*
  Generated class for the Welcome page.
 
@@ -21,7 +23,10 @@ export class WelcomePage {
     loading: Loading;
 
     constructor(public navCtrl: NavController,
-                private apiService: ApiService, private authService: AuthService, public loadingCtrl: LoadingController) {
+                private apiService: ApiService,
+                private authService: AuthService,
+                public loadingCtrl: LoadingController,
+                private iab: InAppBrowser) {
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
             showBackdrop: true
@@ -45,6 +50,32 @@ export class WelcomePage {
             LocalSettingService.setUserInfo(this.authService.userInfo);
             this.navCtrl.setRoot(HomePage);
         })
+    }
+
+    /**
+     * wakatime授权
+     */
+    grantClicked() {
+        let url = `https://wakatime.com/oauth/authorize?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${REDIRECT_URI}&scope=email,read_stats`;
+        let browser = this.iab.create(url, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+        let listener = browser.on('loadstart').subscribe((event: any) => {
+
+            //Ignore the wakatime authorize screen
+            if (event.url.indexOf('oauth/authorize') > -1) {
+                return;
+            }
+
+            //Check the redirect uri
+            if (event.url.indexOf(REDIRECT_URI) > -1) {
+                listener.unsubscribe();
+                browser.close();
+                let token = event.url.split('=')[1].split('&')[0];
+                alert(event.url);
+                alert(token);
+            } else {
+                alert("Could not authenticate");
+            }
+        });
     }
 
 }

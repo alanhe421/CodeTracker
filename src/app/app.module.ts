@@ -22,6 +22,7 @@ import {LeaderdetailPage} from "../pages/leaderdetail/leaderdetail";
 import {AuthService} from "../providers/auth.service";
 import {UseragentsPage} from "../pages/useragents/useragents";
 import {ErrorService} from "../providers/error.service";
+import {InAppBrowser} from "@ionic-native/in-app-browser";
 // let storage: Storage = new Storage();
 
 // export function getAuthHttp(http) {
@@ -74,7 +75,8 @@ import {ErrorService} from "../providers/error.service";
             useClass: IonicErrorHandler
         },
         ApiService, AuthService, ErrorService, SplashScreen, StatusBar,
-        AppVersion]
+        AppVersion,
+        InAppBrowser]
 })
 export class AppModule {
 }

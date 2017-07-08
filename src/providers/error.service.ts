@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
-import {ToastController} from "ionic-angular";
 /**
  * Created by He on 6/2/17.
  * 错误处理服务类

@@ -8,8 +8,9 @@ import {ErrorService} from "./error.service";
  * Created by He on 3/3/17.
  * 请求API
  */
-const WAKATIME_API_URL = 'https://wakatime.com/api/v1';
-
+export const WAKATIME_API_URL = 'https://wakatime.com/api/v1';
+export const CLIENT_ID = 'YAfge95KBCv2GSiXY0F5oiPK';
+export const REDIRECT_URI='http://localhost:8100';
 @Injectable()
 export class ApiService {
 

@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {NavController, NavParams} from "ionic-angular";
 import {StatsPage} from "../stats/stats";
+import domtoimage from "dom-to-image";
 declare var Wechat: any;
 /*
  Generated class for the Dashboard page.
@@ -37,5 +38,16 @@ export class DashboardPage {
         }, function (reason) {
             alert("Failed: " + reason);
         });
+    }
+
+    saveToImage() {
+        console.log(domtoimage);
+        domtoimage.toJpeg(document.getElementById('content-statistics'), {quality: 0.95})
+            .then(function (dataUrl) {
+                var link = document.createElement('a');
+                link.download = 'screen.jpeg';
+                link.href = dataUrl;
+                link.click();
+            });
     }
 }
