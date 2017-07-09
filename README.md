@@ -6,11 +6,11 @@
 
 ![图标](./resources/ios/icon/icon-40%403x.png)
 
-## [What is wakatime?](https://wakatime.com/about)
+## [What is WakaTime?](https://wakatime.com/about)
 
-**wakatime**是个全自动化的时间追踪工具,依赖于大量的IDE插件及文本编辑器，可以对我们从事coding活动所花费的时间进行可视化展示，让你明白在那些时间里，都做了什么。
+**WakaTime**是个全自动化的时间追踪工具,依赖于大量的IDE插件及文本编辑器，可以对我们从事coding活动所花费的时间进行可视化展示，让你明白在那些时间里，都做了什么。
 
-## [what is CodeTracker?](http://1991421.cn)
+## [What is CodeTracker?](http://1991421.cn)
 
 **CodeTracker**是利用wakatimek开放的API，结合混合开发技术开发的APP,实现移动端可视化显示wakatime对于coding统计。
 用开源的技术做开发的事，一方面练习技术，解手痒，一方面满足自己或者有同类需求的友人。
@@ -23,7 +23,7 @@
 - [ionic2(v3)](https://github.com/driftyco/ionic)
 - [angular4](ttps://angular.io/)
 - [echarts](http://echarts.baidu.com/)
-- [wakatime-API](https://wakatime.com/developers)
+- [WakaTime-API](https://wakatime.com/developers)
 - [ionic2-auth0](https://auth0.com/docs/quickstart/native/ionic2)
 
 
