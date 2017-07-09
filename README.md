@@ -60,3 +60,4 @@ ionic cordova emulate ios --livereload -c -s
 ## 入驻商店
 
 + [腾讯应用宝](http://a.app.qq.com/o/simple.jsp?pkgname=cn.he.codetracker)
++ [小米应用商店](http://app.mi.com/)-ing
