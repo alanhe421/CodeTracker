@@ -23,6 +23,8 @@ import {AuthService} from "../providers/auth.service";
 import {UseragentsPage} from "../pages/useragents/useragents";
 import {ErrorService} from "../providers/error.service";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
+import {SocialSharing} from "@ionic-native/social-sharing";
+
 // let storage: Storage = new Storage();
 
 // export function getAuthHttp(http) {
@@ -76,7 +78,8 @@ import {InAppBrowser} from "@ionic-native/in-app-browser";
         },
         ApiService, AuthService, ErrorService, SplashScreen, StatusBar,
         AppVersion,
-        InAppBrowser]
+        InAppBrowser,
+        SocialSharing]
 })
 export class AppModule {
 }

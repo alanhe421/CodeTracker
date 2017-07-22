@@ -1,3 +1,6 @@
+/*
+custom style
+*/
 #copy-right {
     position: fixed;
     bottom: 4rem;
@@ -13,7 +16,8 @@
 #login-btn {
 
 }
-.info{
+
+.info {
     color: #8e9093
 }
 
@@ -49,4 +53,9 @@ ion-icon[name='menu'] {
 
 #leaderdetail .icon-medals {
     width: 3.2rem;
+}
+
+#socialShare {
+    background-color: transparent;
+    float: right;
 }

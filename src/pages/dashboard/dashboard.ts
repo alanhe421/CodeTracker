@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {NavController, NavParams} from "ionic-angular";
 import {StatsPage} from "../stats/stats";
 import domtoimage from "dom-to-image";
-declare var Wechat: any;
+import {SocialSharing} from "@ionic-native/social-sharing";
 /*
  Generated class for the Dashboard page.
 
@@ -20,7 +20,7 @@ export class DashboardPage {
     tab3: any = StatsPage;
     tab4: any = StatsPage;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, private socialSharing: SocialSharing) {
 
 
     }
@@ -30,14 +30,6 @@ export class DashboardPage {
     }
 
     share() {
-        Wechat.share({
-            text: "This is just a plain string",
-            scene: Wechat.Scene.TIMELINE   // share to Timeline
-        }, function () {
-            alert("Success");
-        }, function (reason) {
-            alert("Failed: " + reason);
-        });
     }
 
     saveToImage() {
@@ -49,5 +41,25 @@ export class DashboardPage {
                 link.href = dataUrl;
                 link.click();
             });
+    }
+
+    /**
+     * 社交分享
+     */
+    socialShare() {
+        let options = {
+            message: 'CodeTracker'
+        };
+        let onSuccess = function (result) {
+            console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+            console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+        };
+
+        let onError = function (msg) {
+            console.log("Sharing failed with message: " + msg);
+        };
+
+        this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
+
     }
 }
