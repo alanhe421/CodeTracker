@@ -64,7 +64,7 @@ export class DashboardPage {
         let onError = function (msg) {
             console.log("Sharing failed with message: " + msg);
         };
-        options.files = ['www/assets/img/sample.jpg'];
+        options.files = ['www/assets/img/sample.png'];
         this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
 
         // html2canvas(document.body, {useCORS: true}).then(function (canvas) {
