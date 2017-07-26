@@ -1,10 +1,9 @@
-import {Component} from "@angular/core";
+import {Component, ElementRef, ViewChild} from "@angular/core";
 import {Loading, LoadingController} from "ionic-angular";
 import {StatsPage} from "../stats/stats";
 import {SocialSharing} from "@ionic-native/social-sharing";
 import {iOptions} from "./iOptions";
-import {File} from "@ionic-native/file";
-import html2canvas from "html2canvas";
+import * as html2canvas from "html2canvas";
 /*
  Generated class for the Dashboard page.
 
@@ -24,14 +23,15 @@ export class DashboardPage {
     loading: Loading;
     fileDir: string;
     fileName: string;
+    @ViewChild('myscreenshot') myscreenshot: ElementRef;//截图
 
-    constructor(private socialSharing: SocialSharing, public loadingCtrl: LoadingController, private file: File) {
+    constructor(private socialSharing: SocialSharing,
+                public loadingCtrl: LoadingController) {
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
             showBackdrop: true,
             content: '图片生成中'
         });
-        this.fileDir = this.file.applicationDirectory;
     }
 
     ionViewDidLoad() {
@@ -39,23 +39,22 @@ export class DashboardPage {
         console.log(this.fileDir);
     }
 
-    //生成图片
-    createImage() {
-        // this.fileName = `${stamp}.png`;
-        // this.file.createFile(this.fileDir, this.fileName, true).then((FileEntry) => {
-        //     console.log(FileEntry);
-        //document.getElementById('content-statistics')
-        // this.file.writeExistingFile(this.file.dataDirectory, this.fileName, blob).then(() => {
-        //     console.log('图片生成OK');
-        // });
+    //创建图片
+    createImg(canvas) {
+        let dataURL = canvas.toDataURL("image/png");// getting base64 string
+        let triggerDownload = this.myscreenshot.nativeElement.href = dataURL;
+        // triggerDownload.click();
+        // triggerDownload.remove();
     }
 
     /**
      * 社交分享
      */
     socialShare() {
+        // options.files = ['www/assets/img/sample.png'];
         let options: iOptions = {
             message: 'CodeTracker',
+            files: ['myscreenshot.png']
         };
         let onSuccess = function (result) {
             console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
@@ -64,26 +63,20 @@ export class DashboardPage {
         let onError = function (msg) {
             console.log("Sharing failed with message: " + msg);
         };
-        options.files = ['www/assets/img/sample.png'];
-        this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
 
-        // html2canvas(document.body, {useCORS: true}).then(function (canvas) {
-        //     try {
-        //         let b64Data = canvas.toDataURL("image/png");
-        //         console.log(b64Data);
-        //         console.log('图片生成OK');
-        //         // options.files = ['www/assets/img/sample.jpg'];
-        //         this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
-        //     } catch (err) {
-        //         console.log(err)
-        //     }
-        // }).catch(function onRejected(error) {
-        //     console.log(error);
-        // });
+        html2canvas(document.body, {useCORS: true}).then(canvas => {
+            this.createImg(canvas);
+            // this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
+        }).catch(function onRejected(error) {
+            console.log(error);
+        });
     }
+
 
     test() {
         // this.loading.present();
         this.socialShare();
     }
+
+
 }
