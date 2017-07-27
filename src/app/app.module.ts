@@ -24,7 +24,10 @@ import {UseragentsPage} from "../pages/useragents/useragents";
 import {ErrorService} from "../providers/error.service";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
 import {SocialSharing} from "@ionic-native/social-sharing";
-import { File } from '@ionic-native/file';
+import {File} from "@ionic-native/file";
+import {Screenshot} from "@ionic-native/screenshot";
+import {FileTransfer} from "@ionic-native/file-transfer";
+
 // let storage: Storage = new Storage();
 
 // export function getAuthHttp(http) {
@@ -80,7 +83,9 @@ import { File } from '@ionic-native/file';
         AppVersion,
         InAppBrowser,
         SocialSharing,
-        File]
+        File,
+        FileTransfer,
+        Screenshot]
 })
 export class AppModule {
 }

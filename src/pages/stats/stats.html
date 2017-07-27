@@ -8,34 +8,35 @@
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
-<div id="content-statistics">
-    <ion-card>
-        <ion-card-header>
-            Logged time in Today
-        </ion-card-header>
+    <div id="content-statistics">
+        <ion-card>
+            <ion-card-header>
+                Logged time in Today
+            </ion-card-header>
 
-        <ion-card-content>
-            {{grandTotal?.text}}
-        </ion-card-content>
-    </ion-card>
-    <ion-card>
-        <ion-card-header>
-            Logged time in last 7 days
-        </ion-card-header>
+            <ion-card-content>
+                {{grandTotal?.text}}
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header>
+                Logged time in last 7 days
+            </ion-card-header>
 
-        <ion-card-content>
-            {{data?.human_readable_total}}
-        </ion-card-content>
-    </ion-card>
+            <ion-card-content>
+                {{data?.human_readable_total}}
+            </ion-card-content>
+        </ion-card>
 
-    <div #languagesUsed id="languages-used" style="width: 100%;height: 450px">
+        <div #languagesUsed id="languages-used" style="width: 100%;height: 450px">
+
+        </div>
+        <div #editorsUsed id="editors-used" style="width: 100%;height: 450px">
+
+        </div>
+        <div #systemsUsed id="systems-used" style="width: 100%;height: 450px">
+
+        </div>
 
     </div>
-    <div #editorsUsed id="editors-used" style="width: 100%;height: 450px">
-
-    </div>
-    <div #systemsUsed id="systems-used" style="width: 100%;height: 450px">
-
-    </div>
-</div>
 </ion-content>

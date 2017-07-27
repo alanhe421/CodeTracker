@@ -4,6 +4,9 @@ import {StatsPage} from "../stats/stats";
 import {SocialSharing} from "@ionic-native/social-sharing";
 import {iOptions} from "./iOptions";
 import * as html2canvas from "html2canvas";
+import {File} from "@ionic-native/file";
+import {FileTransfer, FileTransferObject} from "@ionic-native/file-transfer";
+
 /*
  Generated class for the Dashboard page.
 
@@ -26,6 +29,8 @@ export class DashboardPage {
     @ViewChild('myscreenshot') myscreenshot: ElementRef;//截图
 
     constructor(private socialSharing: SocialSharing,
+                private transfer: FileTransfer,
+                private file: File,
                 public loadingCtrl: LoadingController) {
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
@@ -41,20 +46,17 @@ export class DashboardPage {
 
     //创建图片
     createImg(canvas) {
-        let dataURL = canvas.toDataURL("image/png");// getting base64 string
-        let triggerDownload = this.myscreenshot.nativeElement.href = dataURL;
-        // triggerDownload.click();
-        // triggerDownload.remove();
+
     }
 
     /**
      * 社交分享
      */
     socialShare() {
-        // options.files = ['www/assets/img/sample.png'];
+        let filename = this.file.dataDirectory + 'myscreenshot.png';
         let options: iOptions = {
             message: 'CodeTracker',
-            files: ['myscreenshot.png']
+            files: [filename]
         };
         let onSuccess = function (result) {
             console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
@@ -63,15 +65,22 @@ export class DashboardPage {
         let onError = function (msg) {
             console.log("Sharing failed with message: " + msg);
         };
-
-        html2canvas(document.body, {useCORS: true}).then(canvas => {
-            this.createImg(canvas);
-            // this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
+        this.loading.present();
+        html2canvas(document.getElementById('content-statistics'), {useCORS: true}).then(canvas => {
+            let dataURL = canvas.toDataURL("image/png");// getting base64 string
+            let fileTransfer: FileTransferObject = this.transfer.create();
+            fileTransfer.download(dataURL, filename).then((entry) => {
+                console.log('download complete: ' + entry.toURL());
+                this.loading.dismiss();
+                this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
+            }, (error) => {
+                // handle error
+                console.log(error);
+            });
         }).catch(function onRejected(error) {
             console.log(error);
         });
     }
-
 
     test() {
         // this.loading.present();

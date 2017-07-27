@@ -99,4 +99,5 @@
     <plugin name="cordova-plugin-x-socialsharing" spec="~5.1.8" />
     <plugin name="cordova-plugin-file" spec="~4.3.3" />
     <plugin name="com.darktalker.cordova.screenshot" spec="~0.1.5" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.6.3" />
 </widget>
