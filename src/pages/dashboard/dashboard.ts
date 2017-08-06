@@ -1,12 +1,11 @@
-import {Component, ElementRef, ViewChild} from "@angular/core";
+import {Component} from "@angular/core";
 import {Loading, LoadingController} from "ionic-angular";
 import {StatsPage} from "../stats/stats";
 import {SocialSharing} from "@ionic-native/social-sharing";
 import {iOptions} from "./iOptions";
-import * as html2canvas from "html2canvas";
 import {File} from "@ionic-native/file";
 import {FileTransfer, FileTransferObject} from "@ionic-native/file-transfer";
-
+import * as domtoimage from "dom-to-image";
 /*
  Generated class for the Dashboard page.
 
@@ -26,7 +25,7 @@ export class DashboardPage {
     loading: Loading;
     fileDir: string;
     fileName: string;
-    @ViewChild('myscreenshot') myscreenshot: ElementRef;//截图
+    // @ViewChild('myscreenshot') myscreenshot: ElementRef;//截图
 
     constructor(private socialSharing: SocialSharing,
                 private transfer: FileTransfer,
@@ -44,20 +43,45 @@ export class DashboardPage {
         console.log(this.fileDir);
     }
 
-    //创建图片
-    createImg(canvas) {
-
-    }
-
     /**
      * 社交分享
      */
-    socialShare() {
-        let filename = this.file.dataDirectory + 'myscreenshot.png';
+    shareClicked() {
+        let filename = this.file.dataDirectory + 'myscreenshot.jpeg';
         let options: iOptions = {
             message: 'CodeTracker',
-            files: [filename]
+            subject: 'CodeTracker',
+            files: [filename],
+            chooserTitle: 'CodeTracker'
         };
+
+        // function filter(node) {
+        //     return (node.tagName !== 'i');
+        // }
+        // this.socialShare(options);
+
+        this.loading.present();
+        domtoimage.toJpeg(document.getElementById('content-statistics'))
+            .then(function (dataURL) {
+                this.downloadFile(dataURL, filename).then((entry) => {
+                    console.log('download complete: ' + entry.toURL());
+                    this.loading.dismiss();
+                    this.socialShare(options);
+                }, (error) => {
+                    // handle error
+                    console.log(error);
+                });
+            });
+    }
+
+    //文件下载
+    downloadFile(dataURL: string, filename: string) {
+        let fileTransfer: FileTransferObject = this.transfer.create();
+        return fileTransfer.download(dataURL, filename)
+    }
+
+    //社交分享
+    socialShare(options: iOptions) {
         let onSuccess = function (result) {
             console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
             console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
@@ -65,27 +89,6 @@ export class DashboardPage {
         let onError = function (msg) {
             console.log("Sharing failed with message: " + msg);
         };
-        this.loading.present();
-        html2canvas(document.getElementById('content-statistics'), {useCORS: true}).then(canvas => {
-            let dataURL = canvas.toDataURL("image/png");// getting base64 string
-            let fileTransfer: FileTransferObject = this.transfer.create();
-            fileTransfer.download(dataURL, filename).then((entry) => {
-                console.log('download complete: ' + entry.toURL());
-                this.loading.dismiss();
-                this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
-            }, (error) => {
-                // handle error
-                console.log(error);
-            });
-        }).catch(function onRejected(error) {
-            console.log(error);
-        });
+        this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
     }
-
-    test() {
-        // this.loading.present();
-        this.socialShare();
-    }
-
-
 }
