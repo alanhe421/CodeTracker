@@ -8,6 +8,7 @@ export class AuthService {
 
     isLoggedIn: boolean = false;
     userInfo: any;
+    platform: string;
 
     constructor() {
         if (LocalSettingService.getAuthorization()) {

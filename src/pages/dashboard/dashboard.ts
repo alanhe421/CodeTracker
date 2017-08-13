@@ -1,11 +1,15 @@
-import {Component} from "@angular/core";
+import {Component, ElementRef, ViewChild} from "@angular/core";
 import {Loading, LoadingController} from "ionic-angular";
-import {StatsPage} from "../stats/stats";
 import {SocialSharing} from "@ionic-native/social-sharing";
 import {iOptions} from "./iOptions";
 import {File} from "@ionic-native/file";
 import {FileTransfer, FileTransferObject} from "@ionic-native/file-transfer";
-import * as domtoimage from "dom-to-image";
+import * as html2canvas from "html2canvas";
+import {AuthService} from "../../providers/auth.service";
+import {ApiService} from "../../providers/api.service";
+import * as moment from "moment";
+import * as echarts from "echarts";
+
 /*
  Generated class for the Dashboard page.
 
@@ -18,51 +22,235 @@ import * as domtoimage from "dom-to-image";
 })
 export class DashboardPage {
 
-    tab1: any = StatsPage;
-    tab2: any = StatsPage;
-    tab3: any = StatsPage;
-    tab4: any = StatsPage;
     loading: Loading;
     fileDir: string;
     fileName: string;
-    // @ViewChild('myscreenshot') myscreenshot: ElementRef;//截图
 
-    constructor(private socialSharing: SocialSharing,
-                private transfer: FileTransfer,
-                private file: File,
-                public loadingCtrl: LoadingController) {
+
+    range: string;
+    @ViewChild('languagesUsed') languagesUsed: ElementRef;//使用语言
+    @ViewChild('editorsUsed') editorsUsed: ElementRef;//编辑器
+    @ViewChild('systemsUsed') systemsUsed: ElementRef;//操作系统
+
+    data: any;
+    grandTotal: any;
+
+    constructor(private apiService: ApiService,
+                public loadingCtrl: LoadingController,
+    private socialSharing: SocialSharing,
+    private transfer: FileTransfer,
+    private file: File,
+    public authService: AuthService) {
+        this.range = 'last_7_days';
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
             showBackdrop: true,
             content: '图片生成中'
         });
+
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad DashboardPage');
+        console.log('ionViewDidLoad StatsPage');
+        this.loading.present();
         console.log(this.fileDir);
+        this.apiService.getStats(this.range).subscribe(res => {
+                console.log(res);
+                this.data = res.data;
+                this.initLanguageUsed(res.data.languages);
+                this.initEditors(res.data.editors);
+                this.initSystemsUsed(res.data.operating_systems);
+                this.loading.dismiss();
+            },
+            error => {
+                this.loading.dismiss();
+            }
+        );
+        let now = moment().format('YYYY-MM-DD');
+
+        this.apiService.getSummaries(now, now).subscribe(res => {
+                res = res.data[0];
+                this.grandTotal = res['grand_total'];
+                console.log(res['grand_total']);
+            }
+        );
     }
+
+
+    /**
+     *
+     * @param languages
+     */
+    initLanguageUsed(languages: Array<any>): void {
+        let container = this.languagesUsed.nativeElement;
+        let myChart = echarts.init(container);
+        let option = {
+            title: {
+                text: 'Languages',
+                left: 'center',
+                top: 'center'
+            },
+            legend: {
+                show: true,
+                // orient: 'horizontal',
+                // left: 'left',
+                bottom: 0,
+                data: []
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: ['50%', '90%'],
+                    data: [],
+                    label: {
+                        normal: {
+                            position: 'inside'
+                        }
+                    },
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        for (let item of languages) {
+            option.series[0].data.push({value: item['total_seconds'], name: item['name']});
+            option.legend.data.push(item['name']);
+        }
+
+
+        myChart.setOption(option);
+    }
+
+    /**
+     *
+     */
+    initEditors(editors: Array<any>): void {
+        let container = this.editorsUsed.nativeElement;
+        let myChart = echarts.init(container);
+        let option = {
+            title: {
+                text: 'Editors',
+                left: 'center',
+                top: 'center',
+            },
+            legend: {
+                show: true,
+                bottom: 0,
+                data: []
+            },
+            series: [
+                {
+                    name: '编辑器',
+                    type: 'pie',
+                    radius: ['50%', '90%'],
+                    data: [],
+                    label: {
+                        normal: {
+                            position: 'inside'
+                        }
+                    },
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        for (let item of editors) {
+            option.series[0].data.push({value: item['total_seconds'], name: item['name']});
+            option.legend.data.push(item['name']);
+        }
+
+
+        myChart.setOption(option);
+    }
+
+
+    /**
+     *
+     * @param systems
+     */
+    initSystemsUsed(systems: Array<any>): void {
+        let container = this.systemsUsed.nativeElement;
+        let myChart = echarts.init(container);
+        let option = {
+            title: {
+                text: 'System',
+                left: 'center',
+                top: 'center',
+            },
+            legend: {
+                show: true,
+                bottom: 0,
+                data: []
+            },
+            series: [
+                {
+                    name: '系统',
+                    type: 'pie',
+                    radius: ['50%', '90%'],
+                    data: [],
+                    label: {
+                        normal: {
+                            position: 'inside'
+                        }
+                    },
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        for (let item of systems) {
+            option.series[0].data.push({value: item['total_seconds'], name: item['name']});
+            option.legend.data.push(item['name']);
+        }
+
+        myChart.setOption(option);
+    }
+
+    //刷新
+    doRefresh(refresher) {
+        let now = moment().format('YYYY-MM-DD');
+        this.apiService.getSummaries(now, now).subscribe(res => {
+            res = res.data[0];
+            this.grandTotal = res['grand_total'];
+            console.log(res['grand_total']);
+            refresher.complete();
+        });
+    }
+
 
     /**
      * 社交分享
      */
     shareClicked() {
-        let filename = this.file.dataDirectory + 'myscreenshot.jpeg';
+        let filename = this.file.dataDirectory + 'myscreenshot.png';
         let options: iOptions = {
             message: 'CodeTracker',
             subject: 'CodeTracker',
             files: [filename],
             chooserTitle: 'CodeTracker'
         };
-
-        // function filter(node) {
-        //     return (node.tagName !== 'i');
-        // }
-        // this.socialShare(options);
-
-        this.loading.present();
-        domtoimage.toJpeg(document.getElementById('content-statistics'))
-            .then(function (dataURL) {
+        // if ('iOS' == this.authService.platform) {
+        //     console.log('iOS下载开始');
+        html2canvas(document.body, {
+            onrendered: (canvas) => {
+                let dataURL = canvas.toDataURL();
+                // canvas is the final rendered <canvas> element
                 this.downloadFile(dataURL, filename).then((entry) => {
                     console.log('download complete: ' + entry.toURL());
                     this.loading.dismiss();
@@ -71,8 +259,27 @@ export class DashboardPage {
                     // handle error
                     console.log(error);
                 });
-            });
+            }
+        });
+        // }
+        // else {//Android
+        //     domtoimage.toPng(document.getElementById('content-statistics'))
+        //         .then(function (dataURL) {
+        //             // location.href = dataURL;
+        //             this.downloadFile(dataURL, filename).then((entry) => {
+        //                 console.log('download complete: ' + entry.toURL());
+        //                 this.loading.dismiss();
+        //                 this.socialShare(options);
+        //             }, (error) => {
+        //                 // handle error
+        //                 console.log(error);
+        //             });
+        //         });
+        // }
+        this.loading.present();
+
     }
+
 
     //文件下载
     downloadFile(dataURL: string, filename: string) {

@@ -56,7 +56,5 @@ ion-icon[name='menu'] {
 }
 
 #socialShare {
-    background-color: transparent;
-    float: right;
-    font-size: 1.7rem;
+    color: white;
 }

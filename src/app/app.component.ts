@@ -6,7 +6,7 @@ import {StatusBar} from "@ionic-native/status-bar";
 import {AuthService} from "../providers/auth.service";
 import {ErrorService} from "../providers/error.service";
 import {HomePage} from "../pages/home/home";
-
+import {DeviceMock} from "../mocks/mock";
 
 @Component({
     templateUrl: 'app.html'
@@ -18,6 +18,7 @@ export class AuthApp {
     constructor(platform: Platform, public splashScreen: SplashScreen, public statusBar: StatusBar,
                 private authService: AuthService,
                 private errorService: ErrorService,
+                private device: DeviceMock,
                 private toastCtrl: ToastController) {
         platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
@@ -27,6 +28,8 @@ export class AuthApp {
             if (this.authService.isLoggedIn) {
                 this.rootPage = HomePage;
             }
+            console.log(this.device);
+            this.authService.platform = this.device.platform;
             // Schedule a token refresh on app start up
             // auth.startupTokenRefresh();
             this.errorService.error$.distinctUntilChanged().subscribe((res) => {

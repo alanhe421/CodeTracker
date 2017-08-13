@@ -10,7 +10,6 @@ import {ProjectPage} from "../pages/project/project";
 import {ApiService} from "../providers/api.service";
 import {CommitsPage} from "../pages/commits/commits";
 import {DashboardPage} from "../pages/dashboard/dashboard";
-import {StatsPage} from "../pages/stats/stats";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
 import {SplashScreen} from "@ionic-native/splash-screen";
@@ -26,6 +25,7 @@ import {InAppBrowser} from "@ionic-native/in-app-browser";
 import {SocialSharing} from "@ionic-native/social-sharing";
 import {File} from "@ionic-native/file";
 import {FileTransfer} from "@ionic-native/file-transfer";
+import {DeviceMock} from "../mocks/mock";
 
 // let storage: Storage = new Storage();
 
@@ -46,7 +46,6 @@ import {FileTransfer} from "@ionic-native/file-transfer";
         ProjectPage,
         CommitsPage,
         DashboardPage,
-        StatsPage,
         ProfilePage,
         LeaderboardsPage,
         LeaderdetailPage,
@@ -67,7 +66,6 @@ import {FileTransfer} from "@ionic-native/file-transfer";
         ProjectPage,
         CommitsPage,
         DashboardPage,
-        StatsPage,
         ProfilePage,
         LeaderboardsPage,
         LeaderdetailPage,
@@ -80,6 +78,7 @@ import {FileTransfer} from "@ionic-native/file-transfer";
         },
         ApiService, AuthService, ErrorService, SplashScreen, StatusBar,
         AppVersion,
+        DeviceMock,
         InAppBrowser,
         SocialSharing,
         File,

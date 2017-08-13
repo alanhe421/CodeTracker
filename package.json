@@ -20,6 +20,7 @@
         "@angular/platform-browser-dynamic": "4.1.2",
         "@ionic-native/app-version": "3.10.2",
         "@ionic-native/core": "3.10.2",
+        "@ionic-native/device": "^4.1.0",
         "@ionic-native/file": "^4.1.0",
         "@ionic-native/file-transfer": "^4.1.0",
         "@ionic-native/in-app-browser": "^3.10.2",
