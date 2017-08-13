@@ -13,4 +13,6 @@ export class AppVersionMock {
 }
 export class DeviceMock {
     platform: string = 'Android';//iOS,Android
+    uuid: string = "ae932e768a1a848";
+    version: string = "6.0";
 }

@@ -10,9 +10,14 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>Dashboard</ion-title>
-        <button id="socialShare" ion-button (click)="shareClicked()">
-            <ion-icon name="ios-share-outline"></ion-icon>
-        </button>
+        <!--<button ion-button (click)="shareClicked()">-->
+        <!--<ion-icon name="ios-share-outline"></ion-icon>-->
+        <!--</button>-->
+        <ion-buttons end>
+            <button id="socialShare" ion-button icon-only (click)="shareClicked()">
+                <ion-icon name="ios-share-outline"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
