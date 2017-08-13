@@ -1,8 +1,7 @@
 import {Component, ViewChild} from "@angular/core";
-import {AlertController, NavController, ModalController, Nav} from "ionic-angular";
+import {AlertController, ModalController, Nav, NavController} from "ionic-angular";
 import {ProjectPage} from "../project/project";
 import {WelcomePage} from "../welcome/welcome";
-import {ApiService} from "../../providers/api.service";
 import {AboutPage} from "../about/about";
 import {LeaderboardsPage} from "../leaderboards/leaderboards";
 import {DashboardPage} from "../dashboard/dashboard";
@@ -17,8 +16,6 @@ import {UseragentsPage} from "../useragents/useragents";
 export class HomePage {
     @ViewChild(Nav) nav: Nav;
     rootPage: any = DashboardPage;
-    // pages: Array<{title: string, component: any, icon: string}>;
-
     dashPage: any = DashboardPage;
     projectsPage: any = ProjectPage;
     leaderBoardsPage: any = LeaderboardsPage;
@@ -26,25 +23,10 @@ export class HomePage {
     aboutPage: any = AboutPage;
     userInfo: any;
 
-    constructor(public navCtrl: NavController, private apiService: ApiService,
+    constructor(public navCtrl: NavController,
                 private authService: AuthService,
                 public modalCtrl: ModalController, private alertCtrl: AlertController) {
         this.userInfo = this.authService.userInfo;
-
-        // this.pages = [
-        //     {
-        //         title: 'Dashboard', component: DashboardPage, icon: 'code'
-        //     },
-        //     {
-        //         title: 'Projects', component: ProjectPage, icon: 'code'
-        //     },
-        //     {
-        //         title: 'Leaderboards', component: LeaderboardsPage, icon: 'star'
-        //     },
-        //     {
-        //         title: 'UserAgents', component: UseragentsPage, icon: 'star'
-        //     }
-        // ];
     }
 
     // Reset the content nav to have just this page

@@ -8,6 +8,7 @@ import {AppVersion} from "@ionic-native/app-version";
 })
 export class AboutPage {
     versionNumber: string;
+    email = 'i@alanhe.me';
 
     constructor(public navCtrl: NavController, private appVersion: AppVersion) {
 
@@ -20,6 +21,6 @@ export class AboutPage {
     }
 
     contactMe() {
-        document.location.href = `mailto:he@1991421.cn?Subject=CodeTracker&body=Application version:${this.versionNumber}`;
+        document.location.href = `mailto:${this.email}?Subject=CodeTracker&body=Application version:${this.versionNumber}`;
     }
 }

@@ -5,7 +5,6 @@ import {iOptions} from "./iOptions";
 import {File} from "@ionic-native/file";
 import {FileTransfer, FileTransferObject} from "@ionic-native/file-transfer";
 import * as html2canvas from "html2canvas";
-import {AuthService} from "../../providers/auth.service";
 import {ApiService} from "../../providers/api.service";
 import * as moment from "moment";
 import * as echarts from "echarts";
@@ -25,22 +24,19 @@ export class DashboardPage {
     loading: Loading;
     fileDir: string;
     fileName: string;
-
-
     range: string;
+    data: any;
+    grandTotal: any;
     @ViewChild('languagesUsed') languagesUsed: ElementRef;//使用语言
     @ViewChild('editorsUsed') editorsUsed: ElementRef;//编辑器
     @ViewChild('systemsUsed') systemsUsed: ElementRef;//操作系统
 
-    data: any;
-    grandTotal: any;
 
     constructor(private apiService: ApiService,
                 public loadingCtrl: LoadingController,
-    private socialSharing: SocialSharing,
-    private transfer: FileTransfer,
-    private file: File,
-    public authService: AuthService) {
+                private socialSharing: SocialSharing,
+                private transfer: FileTransfer,
+                private file: File) {
         this.range = 'last_7_days';
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
@@ -75,7 +71,6 @@ export class DashboardPage {
             }
         );
     }
-
 
     /**
      *
@@ -233,7 +228,6 @@ export class DashboardPage {
         });
     }
 
-
     /**
      * 社交分享
      */
@@ -247,7 +241,8 @@ export class DashboardPage {
         };
         // if ('iOS' == this.authService.platform) {
         //     console.log('iOS下载开始');
-        html2canvas(document.body, {
+        this.loading.present();
+        html2canvas(document.body, {useCORS: true}, {
             onrendered: (canvas) => {
                 let dataURL = canvas.toDataURL();
                 // canvas is the final rendered <canvas> element
@@ -276,10 +271,7 @@ export class DashboardPage {
         //             });
         //         });
         // }
-        this.loading.present();
-
     }
-
 
     //文件下载
     downloadFile(dataURL: string, filename: string) {
