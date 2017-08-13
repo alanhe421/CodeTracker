@@ -26,7 +26,7 @@ export class AuthApp {
             this.statusBar.styleLightContent();
             this.splashScreen.hide();
             if (this.authService.isLoggedIn) {
-                this.rootPage = HomePage;
+                this.nav.setRoot(HomePage);
             }
             console.log(this.device);
             this.authService.platform = this.device.platform;
