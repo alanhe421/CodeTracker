@@ -11,3 +11,6 @@ export class AppVersionMock {
         });
     }
 }
+export class DeviceMock {
+    platform: string = 'Android';//iOS,Android
+}
