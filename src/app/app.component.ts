@@ -42,7 +42,7 @@ export class AuthApp {
 
     presentToast() {
         let toast = this.toastCtrl.create({
-            message: '账户异常,请重新登录',
+            message: 'Account is abnormal, please log in again',
             duration: 3000,
             position: 'middle'
         });

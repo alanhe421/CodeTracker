@@ -39,20 +39,19 @@ export class HomePage {
     //退出
     logout() {
         let confirm = this.alertCtrl.create({
-            title: '确定注销?',
+            title: 'log out?',
             buttons: [
                 {
-                    text: '取消',
+                    text: 'Yes',
                     handler: () => {
                         console.log('Disagree clicked');
                     }
                 },
                 {
-                    text: '确定',
+                    text: 'No',
                     handler: () => {
                         this.navCtrl.setRoot(WelcomePage);
                         localStorage.removeItem('Authorization');
-                        // this.apiService.delAuthorizationHeader();
                     }
                 }
             ]

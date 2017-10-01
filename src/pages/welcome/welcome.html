@@ -14,7 +14,7 @@
 
 <ion-content padding>
 
-    <h4>欢迎使用CodeTracker,请输入你的WakaTime API key</h4>
+    <h4>Welcome to CodeTracker, please enter your WakaTime API key</h4>
     <form #loginForm="ngForm" (ngSubmit)="saveKey()">
         <ion-list>
             <ion-item>
@@ -27,13 +27,13 @@
 
         </ion-list>
         <div padding>
-            <button ion-button block class="btn btn-block" id="login-btn" [disabled]="!loginForm.form.valid">确定</button>
+            <button ion-button block class="btn btn-block" id="login-btn" [disabled]="!loginForm.form.valid">Confirm</button>
         </div>
     </form>
 
     <div padding>
-        <div text-center class="info" padding>或</div>
-        <button ion-button color="secondary" block class="btn btn-block" (click)="grantClicked()">WakaTime登录</button>
+        <div text-center class="info" padding>Or</div>
+        <button ion-button color="secondary" block class="btn btn-block" (click)="grantClicked()">WakaTime login</button>
     </div>
     <div id="copy-right"> Developed by <a (click)="openBlog()">Alan He</a></div>
 </ion-content>
