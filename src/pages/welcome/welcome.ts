@@ -90,4 +90,12 @@ export class WelcomePage {
         })
     }
 
+    /**
+     * 打开我的博客
+     */
+    openBlog() {
+        let url = `http://1991421.cn`;
+        this.iab.create(url, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+    }
+
 }

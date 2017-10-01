@@ -15,14 +15,9 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card *ngFor="let item of items" (click)="showCommits(item['name'])">
+    <ion-card *ngFor="let item of items" (click)="showCommits(item['id'])">
         <ion-card-header>
             {{item?.name}}
         </ion-card-header>
-
-        <ion-card-content>
-            {{item?.public_url}}
-        </ion-card-content>
-
     </ion-card>
 </ion-content>

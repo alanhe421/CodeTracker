@@ -6,7 +6,7 @@ import {StatusBar} from "@ionic-native/status-bar";
 import {AuthService} from "../providers/auth.service";
 import {ErrorService} from "../providers/error.service";
 import {HomePage} from "../pages/home/home";
-import {DeviceMock} from "../mocks/mock";
+import {Device} from "@ionic-native/device";
 
 @Component({
     templateUrl: 'app.html'
@@ -18,7 +18,7 @@ export class AuthApp {
     constructor(platform: Platform, public splashScreen: SplashScreen, public statusBar: StatusBar,
                 private authService: AuthService,
                 private errorService: ErrorService,
-                private device: DeviceMock,
+                private device: Device,
                 private toastCtrl: ToastController) {
         platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.

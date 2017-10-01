@@ -14,7 +14,7 @@ import {ApiService} from "../../providers/api.service";
 })
 export class CommitsPage {
     projectId: string;
-
+    page: number = 1;
     constructor(public navParams: NavParams, private apiService: ApiService) {
         this.projectId = this.navParams.get('projectId');
     }
@@ -22,7 +22,7 @@ export class CommitsPage {
     ionViewDidLoad() {
         console.log('ionViewDidLoad CommitsPage');
 
-        this.apiService.getCommits(this.projectId).subscribe(res => {
+        this.apiService.getCommits(this.projectId,this.page).subscribe(res => {
             console.log(res);
         });
     }

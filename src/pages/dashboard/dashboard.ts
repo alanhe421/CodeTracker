@@ -41,7 +41,6 @@ export class DashboardPage {
         this.loading = this.loadingCtrl.create({
             spinner: 'bubbles',
             showBackdrop: true,
-            content: '图片生成中'
         });
 
     }
