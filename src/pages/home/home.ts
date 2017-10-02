@@ -42,13 +42,13 @@ export class HomePage {
             title: 'log out?',
             buttons: [
                 {
-                    text: 'Yes',
+                    text: 'No',
                     handler: () => {
                         console.log('Disagree clicked');
                     }
                 },
                 {
-                    text: 'No',
+                    text: 'Yes',
                     handler: () => {
                         this.navCtrl.setRoot(WelcomePage);
                         localStorage.removeItem('Authorization');

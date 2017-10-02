@@ -37,14 +37,14 @@
 
 ## Commands
 
-```
+```bash
 # 初始化开发环境
 
 npm install -g ionic cordova
 
 npm i
 
-# 浏览器运行
+# 浏览器运行,http://localhost:8100
 ionic serve
 
 # 构建打包

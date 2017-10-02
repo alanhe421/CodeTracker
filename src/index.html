@@ -12,8 +12,6 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4e8ef7">
 
-    <!-- cordova.js required for cordova apps -->
-    <script src="cordova.js"></script>
 
     <!-- un-comment this code to enable service worker
     <script>
@@ -26,7 +24,6 @@
     <link href="build/main.css" rel="stylesheet">
     <link href="assets/font/iconfont.css" rel="stylesheet">
     <link href="assets/style.css" rel="stylesheet">
-
     <script src="assets/echarts.min.js"></script>
     <script src="assets/js/canvas-to-blob.min.js"></script>
 
@@ -36,8 +33,15 @@
 <!-- Ionic's root component and where the app will load -->
 <ion-app></ion-app>
 
+
+<!-- cordova.js required for cordova apps -->
+<script src="cordova.js"></script>
+
 <!-- The polyfills js is generated during the build process -->
 <script src="build/polyfills.js"></script>
+
+<!-- The bundle js is generated during the build process -->
+<script src="build/vendor.js"></script>
 
 <!-- The bundle js is generated during the build process -->
 <script src="build/main.js"></script>

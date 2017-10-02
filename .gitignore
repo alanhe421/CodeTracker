@@ -2,9 +2,12 @@
 # http://git-scm.com/docs/gitignore
 
 .idea
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
 node_modules
 platforms
 plugins
 docs/
 .DS_Store
-www/
