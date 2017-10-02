@@ -12,7 +12,7 @@
 
 ## [What is CodeTracker?](http://1991421.cn)
 
-**CodeTracker**是利用wakatimek开放的API，结合混合开发技术开发的APP,实现移动端可视化显示wakatime对于coding统计。
+**CodeTracker**是利用`wakatime`开放的API，结合混合开发技术开发的APP,实现移动端可视化显示wakatime对于coding统计。
 用开源的技术做开发的事，一方面练习技术，解手痒，一方面满足自己或者有同类需求的友人。
 
 时间匆匆流逝，其实我们做技术的更需要利用技术来了解自己的情况，而wakatime是个很好的工具，个人特别喜欢!
@@ -40,21 +40,24 @@
 ```bash
 # 初始化开发环境
 
-npm install -g ionic cordova
+$ npm install -g ionic cordova
 
-npm i
+$ npm i
 
 # 浏览器运行,http://localhost:8100
-ionic serve
+$ ionic serve
 
 # 构建打包
-ionic cordova build android --prod 
+$ ionic cordova build android --prod 
+
+# 签名打包
+$ ionic cordova build android --prod --release
 
 # 开发环境真机运行
-ionic cordova run android --livereload -c -s
+$ ionic cordova run android --livereload -c -s
 
 # 模拟器运行
-ionic cordova emulate ios --livereload -c -s
+$ ionic cordova emulate ios --livereload -c -s
 
 ```
 ## 入驻商店
