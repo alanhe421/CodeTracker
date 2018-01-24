@@ -33,7 +33,6 @@
 + ionic2使用(menu,tabs,nav,native-plugins,http)
 + CORS,跨域问题,chrome需要安装[插件Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
 + 集成echarts
-+ 微信分享
 
 ## Commands
 
