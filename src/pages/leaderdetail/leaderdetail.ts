@@ -1,6 +1,7 @@
 import {Component, ElementRef, ViewChild} from "@angular/core";
 import {NavController, NavParams} from "ionic-angular";
 import * as echarts from "echarts";
+
 /**
  * Generated class for the Leaderdetail page.
  *

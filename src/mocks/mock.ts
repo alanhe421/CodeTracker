@@ -8,7 +8,7 @@ import {Device} from "@ionic-native/device";
 export class AppVersionMock extends AppVersion {
     version = "1.1.0";
 
-    public getVersionNumber() {
+    getVersionNumber(): Promise<string> {
         return new Promise((resolve, reject) => {
             resolve(this.version);
         });

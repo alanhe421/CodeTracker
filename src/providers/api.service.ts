@@ -1,8 +1,10 @@
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 import {LocalSettingService} from "./localsetting.service";
 import {ErrorService} from "./error.service";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 /**
  * Created by He on 3/3/17.

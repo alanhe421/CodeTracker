@@ -46,6 +46,13 @@ $ npm i
 # 浏览器运行,http://localhost:8100
 $ ionic serve
 
+# 添加平台
+$ cordova platform add ios --save
+
+# 删除平台
+$ cordova platform remove ios --save
+
+
 # 构建打包
 $ ionic cordova build android --prod 
 $ ionic cordova build ios --prod 

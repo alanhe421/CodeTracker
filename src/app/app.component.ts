@@ -7,6 +7,7 @@ import {AuthService} from "../providers/auth.service";
 import {ErrorService} from "../providers/error.service";
 import {HomePage} from "../pages/home/home";
 import {Device} from "@ionic-native/device";
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
     templateUrl: 'app.html'
