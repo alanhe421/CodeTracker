@@ -23,7 +23,8 @@ import {SocialSharing} from "@ionic-native/social-sharing";
 import {File} from "@ionic-native/file";
 import {FileTransfer} from "@ionic-native/file-transfer";
 import {AppProvider} from "./app.provider";
-import {HttpModule} from "@angular/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {TokenInterceptor} from "../providers/TokenInterceptor";
 
 let appProviders = AppProvider.getProviders();
 
@@ -44,7 +45,7 @@ let appProviders = AppProvider.getProviders();
     ],
     imports: [
         BrowserModule,
-        HttpModule,
+        HttpClientModule,
         IonicModule.forRoot(AuthApp)
     ],
     bootstrap: [IonicApp],
@@ -66,6 +67,11 @@ let appProviders = AppProvider.getProviders();
         {
             provide: ErrorHandler,
             useClass: IonicErrorHandler
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true
         },
         ApiService,
         AuthService,

@@ -1,10 +1,8 @@
-import {Headers, Http, RequestOptions, Response} from "@angular/http";
+import {Response} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
-import {LocalSettingService} from "./localsetting.service";
 import {ErrorService} from "./error.service";
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import {HttpClient} from "@angular/common/http";
 
 /**
  * Created by He on 3/3/17.
@@ -20,20 +18,8 @@ export class ApiService {
 
     options: any;
 
-    constructor(private http: Http, private errorService: ErrorService) {
-        if (LocalSettingService.getAuthorization()) {
-            this.createAuthorizationHeader();
-        }
-    }
+    constructor(private http: HttpClient, private errorService: ErrorService) {
 
-    createAuthorizationHeader() {
-        let headers = new Headers({'Content-Type': 'application/json'});
-        headers.append('Authorization', `${LocalSettingService.getAuthorization()}`);
-        this.options = new RequestOptions({headers: headers});
-    }
-
-    delAuthorizationHeader() {
-        this.options.headers.removeItem('Authorization');
     }
 
     /**
@@ -43,9 +29,7 @@ export class ApiService {
      */
     getCommits(projectId: string, page: number) {
         return this.http.get(`${WAKATIME_API_URL}/users/current/projects/${projectId}/commits?page=${page}`, this.options)
-            .map(res => res.json()).catch((res) =>
-                this.handleError(res)
-            )
+
     }
 
     /**
@@ -59,9 +43,7 @@ export class ApiService {
         if (branches) {
             url += `&branches=${branches}`;
         }
-        return this.http.get(url, this.options).map(res => res.json()).catch((res) =>
-            this.handleError(res)
-        );
+        return this.http.get(url, this.options);
 
     }
 
@@ -71,9 +53,7 @@ export class ApiService {
      */
     getHeartbeats(date: string) {
         let url = `${WAKATIME_API_URL}/users/current/heartbeats?date=${date}`;
-        return this.http.get(url, this.options).map(res => res.json()).catch((res) =>
-            this.handleError(res)
-        );
+        return this.http.get(url, this.options);
     }
 
     /**
@@ -87,9 +67,7 @@ export class ApiService {
         if (page) {
             url += `page=${page}&`
         }
-        return this.http.get(url, this.options).map(res => res.json()).catch((res) =>
-            this.handleError(res)
-        );
+        return this.http.get(url, this.options);
     }
 
     /**
@@ -97,9 +75,7 @@ export class ApiService {
      * @returns {Observable<R>}
      */
     getProjects() {
-        return this.http.get(`${WAKATIME_API_URL}/users/current/projects`, this.options).map(res => res.json()).catch((res) =>
-            this.handleError(res)
-        );
+        return this.http.get(`${WAKATIME_API_URL}/users/current/projects`, this.options);
     }
 
 
@@ -119,9 +95,7 @@ export class ApiService {
         if (project) {
             url += `project=${project}&`
         }
-        return this.http.get(url, this.options).map(res => res.json()).catch((res) =>
-            this.handleError(res)
-        );
+        return this.http.get(url, this.options);
     }
 
     /**
@@ -135,9 +109,7 @@ export class ApiService {
         if (branches) {
             url += `branches=${branches}&`
         }
-        return this.http.get(url, this.options).map(res => res.json()).catch((res) =>
-            this.handleError(res)
-        );
+        return this.http.get(url, this.options);
     }
 
 
@@ -145,40 +117,14 @@ export class ApiService {
      * A single user.
      */
     getUsers() {
-        return this.http.get(`${WAKATIME_API_URL}/users/current`, this.options).map(res => res.json()).catch((res) =>
-            this.handleError(res)
-        );
+        return this.http.get(`${WAKATIME_API_URL}/users/current`, this.options);
     }
 
     /**
      * List of plugins which have sent data for this user.
      */
     getUserAgents() {
-        return this.http.get(`${WAKATIME_API_URL}/users/current/user_agents`, this.options).map(res => res.json()).catch((res) =>
-            this.handleError(res)
-        );
+        return this.http.get(`${WAKATIME_API_URL}/users/current/user_agents`, this.options);
     }
 
-    /**
-     * 异常处理
-     * @param error
-     * @returns {any}
-     */
-    private handleError(error: Response | any) {
-        // In a real world app, you might use a remote logging infrastructure
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            // const code = body.code;//错误码
-            const err = body.error || JSON.stringify(body);
-            console.log('err');
-            console.log(error);
-            this.errorService.updateError(err);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Observable.throw(errMsg);
-    }
 }

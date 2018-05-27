@@ -1,144 +1,17 @@
-{
-  "data": [
-    {
-      "id": "10f431c5-f7dc-475f-aefe-746aab9e7afb",
-      "name": "codetime",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/ixuziuqfxq",
-      "repository": null
-    },
-    {
-      "id": "1b52393b-f1d7-4b90-9dd9-4f0342c1c552",
-      "name": "heqiang421.github.io",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/cqxbrlffgk",
-      "repository": null
-    },
-    {
-      "id": "147f7c18-0ac9-48f9-9527-14d76051ce31",
-      "name": "BOLDv4",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/hlviiofimc",
-      "repository": null
-    },
-    {
-      "id": "7017154d-50d9-491a-91bd-9bb6602517b9",
-      "name": "ionic-demo",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/xrheijrfxh",
-      "repository": null
-    },
-    {
-      "id": "d6c40912-8869-44e9-a733-716572322547",
-      "name": "mboldv4",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/snhtnggduy",
-      "repository": null
-    },
-    {
-      "id": "92b137b5-83aa-464e-8c6e-b26bcc51f50e",
-      "name": "myNewProject",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/lbpfloysqz",
-      "repository": null
-    },
-    {
-      "id": "e8d9a8ea-137d-42f2-b287-ba5edf2cc8d0",
-      "name": "halia",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/pcjqtxvdrf",
-      "repository": null
-    },
-    {
-      "id": "bc2be802-cef4-4d46-bc04-2d68d9b46fe0",
-      "name": "hello",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/hgdqarukug",
-      "repository": null
-    },
-    {
-      "id": "467a8025-c362-4fe0-8d35-a083df8d4b88",
-      "name": "angular4-demo",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/nwptnwfnoo",
-      "repository": null
-    },
-    {
-      "id": "373d3630-4c4c-4596-8893-76ed71f64fa2",
-      "name": "BOLDv4 copy",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/jyubuakuvw",
-      "repository": null
-    },
-    {
-      "id": "2ede2da7-b103-4274-a124-5e53e8912aa4",
-      "name": "angular-demo",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/sfqyfnvowx",
-      "repository": null
-    },
-    {
-      "id": "5b33d484-8494-4213-bcaf-7454d6073a38",
-      "name": "angular-starter",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/zopbtntpqz",
-      "repository": null
-    },
-    {
-      "id": "4d0f6499-fcc3-4f67-850e-812d90bfa856",
-      "name": "ionic2-demo",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/vreajldxcb",
-      "repository": null
-    },
-    {
-      "id": "87a1a839-f148-4bfd-9c4d-2a896e875ab6",
-      "name": "myBlog",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/zkgdizeoac",
-      "repository": null
-    },
-    {
-      "id": "4f7661a0-b411-4fed-b4ef-aefd7d254957",
-      "name": "Ninth",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/bsmytyxsom",
-      "repository": null
-    },
-    {
-      "id": "a079c057-8194-4046-88b8-06c46e776d42",
-      "name": "source",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/jerogcfcbf",
-      "repository": null
-    },
-    {
-      "id": "fa7b4657-57b3-40c1-974f-6ff1cfc4d67e",
-      "name": "angular2-demo",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/ccaypzryne",
-      "repository": null
-    },
-    {
-      "id": "8d4b19f0-13f4-4a89-91a0-53a9a582efcc",
-      "name": "1.1",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/fhkxkwlopy",
-      "repository": null
-    },
-    {
-      "id": "bd9f74da-9e80-4d30-971c-120d29232c27",
-      "name": "jyyq2008",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/dxywohrrpl",
-      "repository": null
-    },
-    {
-      "id": "631d0245-e955-475c-b490-91131ea347e7",
-      "name": "poapp",
-      "privacy": "private",
-      "public_url": "https://wakatime.com/@1fcb745b-b90e-4660-9c2d-2ae97a8ba010/projects/fnkigteqrb",
-      "repository": null
-    }
-  ]
-}
+// html2canvas(document.body, {useCORS: true}).then(function (canvas) {
+// try {
+// let b64Data = canvas.toDataURL("image/png");
+
+// this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
+
+// } catch (err) {
+
+// console.log(err)
+
+// }
+
+// }).catch(function onRejected(error) {
+
+// console.log(error);
+
+// });
