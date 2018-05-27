@@ -10,7 +10,6 @@ import {ApiService} from "../providers/api.service";
 import {CommitsPage} from "../pages/commits/commits";
 import {DashboardPage} from "../pages/dashboard/dashboard";
 import {BrowserModule} from "@angular/platform-browser";
-import {HttpModule} from "@angular/http";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
 import {ProfilePage} from "../pages/profile/profile";
@@ -24,6 +23,7 @@ import {SocialSharing} from "@ionic-native/social-sharing";
 import {File} from "@ionic-native/file";
 import {FileTransfer} from "@ionic-native/file-transfer";
 import {AppProvider} from "./app.provider";
+import {HttpModule} from "@angular/http";
 
 let appProviders = AppProvider.getProviders();
 
