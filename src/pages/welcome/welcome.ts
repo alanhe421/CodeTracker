@@ -80,10 +80,9 @@ export class WelcomePage {
      */
     login() {
         this.loading.present();
-        this.apiService.createAuthorizationHeader();
         this.apiService.getUsers().subscribe(res => {
             this.authService.isLoggedIn = true;
-            this.authService.userInfo = res.data;
+            this.authService.userInfo = res['data'];
             this.loading.dismiss();
             LocalSettingService.setUserInfo(this.authService.userInfo);
             this.navCtrl.setRoot(HomePage);

@@ -30,7 +30,7 @@ export class ProjectPage {
         this.loading.present();
         this.apiService.getProjects().subscribe(res => {
                 console.log(res);
-                this.items = res.data;
+                this.items = res['data'];
                 this.loading.dismiss();
             },
             error => {

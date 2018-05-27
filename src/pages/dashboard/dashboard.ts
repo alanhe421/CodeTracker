@@ -51,10 +51,10 @@ export class DashboardPage {
         console.log(this.fileDir);
         this.apiService.getStats(this.range).subscribe(res => {
                 console.log(res);
-                this.data = res.data;
-                this.initLanguageUsed(res.data.languages);
-                this.initEditors(res.data.editors);
-                this.initSystemsUsed(res.data.operating_systems);
+                this.data = res['data'];
+                this.initLanguageUsed(res['data']['languages']);
+                this.initEditors(res['data']['editors']);
+                this.initSystemsUsed(res['data']['operating_systems']);
                 this.loading.dismiss();
             },
             error => {
@@ -64,7 +64,7 @@ export class DashboardPage {
         let now = moment().format('YYYY-MM-DD');
 
         this.apiService.getSummaries(now, now).subscribe(res => {
-                res = res.data[0];
+                res = res['data'][0];
                 this.grandTotal = res['grand_total'];
                 console.log(res['grand_total']);
             }
@@ -220,7 +220,7 @@ export class DashboardPage {
     doRefresh(refresher) {
         let now = moment().format('YYYY-MM-DD');
         this.apiService.getSummaries(now, now).subscribe(res => {
-            res = res.data[0];
+            res = res['data'][0];
             this.grandTotal = res['grand_total'];
             console.log(res['grand_total']);
             refresher.complete();
