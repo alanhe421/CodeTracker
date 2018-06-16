@@ -1,4 +1,3 @@
-import {Response} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {ErrorService} from "./error.service";
