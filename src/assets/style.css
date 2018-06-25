@@ -2,15 +2,16 @@
 custom style
 */
 #copy-right {
+    font-size: 80%;
+    color: gray;
     position: fixed;
     bottom: 4rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
+    width: 100%;
+    text-align: center;
 }
 
-#copy-right > a {
-    color: #fbb040 !important;
-    text-decoration: none;
+#copy-right a {
+    color: inherit;
 }
 
 #login-btn {
@@ -25,6 +26,7 @@ custom style
     background-color: #3d5afe;
     color: white;
     height: 20%;
+    padding: 1rem;
 }
 
 #user-photo {

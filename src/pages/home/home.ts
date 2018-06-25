@@ -37,18 +37,19 @@ export class HomePage {
     }
 
     //退出
-    logout() {
+    logout(event) {
+        event.preventDefault();
         let confirm = this.alertCtrl.create({
             title: '确认退出?',
             buttons: [
                 {
-                    text: 'No',
+                    text: '取消',
                     handler: () => {
                         console.log('Disagree clicked');
                     }
                 },
                 {
-                    text: 'Yes',
+                    text: '确定',
                     handler: () => {
                         this.navCtrl.setRoot(WelcomePage);
                         localStorage.removeItem('Authorization');
