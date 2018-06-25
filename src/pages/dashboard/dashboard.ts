@@ -80,7 +80,7 @@ export class DashboardPage {
         let myChart = echarts.init(container);
         let option = {
             title: {
-                text: 'Languages',
+                text: '编程语言',
                 left: 'center',
                 top: 'center'
             },
@@ -129,7 +129,7 @@ export class DashboardPage {
         let myChart = echarts.init(container);
         let option = {
             title: {
-                text: 'Editors',
+                text: '编辑器',
                 left: 'center',
                 top: 'center',
             },
@@ -178,7 +178,7 @@ export class DashboardPage {
         let myChart = echarts.init(container);
         let option = {
             title: {
-                text: 'System',
+                text: '操作系统',
                 left: 'center',
                 top: 'center',
             },

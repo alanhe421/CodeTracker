@@ -9,7 +9,7 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>leaderboards</ion-title>
+        <ion-title>排行榜</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -28,8 +28,7 @@
             <img *ngIf="i==2" src="assets/icon/no3.svg"
                  class="icon-medals">
             <p>
-                Daily
-                Average:{{item?.running_total?.human_readable_daily_average}}
+                日均码字:{{item?.running_total?.human_readable_daily_average}}
             </p>
 
         </ion-item>

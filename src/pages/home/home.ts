@@ -39,7 +39,7 @@ export class HomePage {
     //退出
     logout() {
         let confirm = this.alertCtrl.create({
-            title: 'log out?',
+            title: '确认退出?',
             buttons: [
                 {
                     text: 'No',
