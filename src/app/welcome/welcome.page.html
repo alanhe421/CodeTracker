@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>CodeTracker</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <h4>Welcome to CodeTracker, please enter your WakaTime API key</h4>
+    <form #loginForm="ngForm" (ngSubmit)="saveKey()">
+        <ion-list>
+            <ion-item>
+                API Key
+            </ion-item>
+            <ion-item>
+                <ion-input name="apikey" type="text" [(ngModel)]="apiKey" required minlength="36"
+                           maxlength="36" #name="ngModel"></ion-input>
+            </ion-item>
+
+        </ion-list>
+        <div padding>
+            <ion-button expand="block" id="login-btn" [disabled]="!loginForm.form.valid">Confirm
+            </ion-button>
+        </div>
+    </form>
+
+    <div padding>
+        <div text-center class="info" padding>Or</div>
+        <ion-button color="secondary" expand="block" (click)="grantClicked()" tappable>WakaTime login
+        </ion-button>
+    </div>
+    <div id="copy-right"> Developed by <a (click)="openBlog()">Alan He</a></div>
+
+    <ion-button (click)="sayHello()" tappable>sayHello</ion-button>
+</ion-content>

@@ -2,11 +2,67 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import "~@ionic/angular/css/colors.css";
-
+@import "~@ionic/angular/css/core.css";
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+#copy-right {
+  position: fixed;
+  bottom: 4rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+#copy-right > a {
+  color: #fbb040 !important;
+  text-decoration: none;
+}
+
+#login-btn {
+
+}
+
+.info {
+  color: #8e9093
+}
+
+#left-menu-header {
+  background-color: #3d5afe;
+  color: white;
+  height: 20%;
+}
+
+#user-photo {
+  width: 20%;
+  height: 20%;
+}
+
+.toolbar-background {
+  background-color: #042733;
+}
+
+.toolbar-title {
+  color: white
+}
+
+ion-icon[name='menu'] {
+  color: white;
+}
+
+#leaderboards .icon-medals {
+  width: 3.2rem;
+  position: relative;
+  float: right;
+  top: -1.6rem;
+}
+
+#leaderdetail .icon-medals {
+  width: 3.2rem;
+}
+
+#socialShare {
+  color: white;
+}
