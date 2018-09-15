@@ -12,8 +12,7 @@ import {CommonModule} from "@angular/common";
         CommonModule,
         RouterModule.forChild([{path: '', component: WelcomePage}])
     ],
-    declarations: [WelcomePage],
-    entryComponents:[WelcomePage]
+    declarations: [WelcomePage]
 })
 export class WelcomePageModule {
 }
