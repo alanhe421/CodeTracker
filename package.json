@@ -26,17 +26,19 @@
     "@ionic-native/status-bar": "5.0.0-beta.15",
     "@ionic/angular": "4.0.0-beta.7",
     "cordova-ios": "^4.5.5",
+    "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
     "cordova-plugin-ionic-webview": "^2.1.4",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.3",
     "core-js": "^2.5.3",
+    "echarts": "^4.2.0-rc.1",
+    "moment": "^2.22.2",
     "rxjs": "6.2.2",
-    "zone.js": "^0.8.26",
-    "cordova-plugin-app-version": "^0.1.9",
-    "cordova-plugin-inappbrowser": "^3.0.0"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular/cli": "~6.1.1",

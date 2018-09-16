@@ -1,0 +1,45 @@
+<ion-menu side="start">
+    <ion-header id="left-menu-header" padding (click)="presentModal()">
+        <ion-avatar item-left>
+            <img src="{{userInfo?.photo}}" id="user-photo">
+        </ion-avatar>
+        <div>{{userInfo?.display_name}}</div>
+        <div>{{userInfo?.email}}</div>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <ion-menu-toggle>
+                <ion-item href="/home">
+                    <ion-icon class="iconfont icon-dashboard"></ion-icon>
+                    Dashboard
+                </ion-item>
+            </ion-menu-toggle>
+
+            <!--<ion-button menuClose ion-item icon-left (click)="openPage(projectsPage)" detail-none>-->
+            <!--<ion-icon class="iconfont icon-project"></ion-icon>-->
+            <!--Projects-->
+            <!--</ion-button>-->
+
+            <!--<ion-button menuClose ion-item icon-left (click)="openPage(leaderBoardsPage)" detail-none>-->
+            <!--<ion-icon class="iconfont icon-jiangbei"></ion-icon>-->
+            <!--Leaderboards-->
+            <!--</ion-button>-->
+            <!--<ion-button menuClose ion-item icon-left (click)="openPage(userAgentsPage)" detail-none>-->
+            <!--<ion-icon class="iconfont icon-ruanjian"></ion-icon>-->
+            <!--UserAgents-->
+            <!--</ion-button>-->
+        </ion-list>
+        <!--<ion-list>-->
+
+        <!--<ion-button menuClose ion-item icon-left (click)="openPage(aboutPage)" detail-none>-->
+        <!--<ion-icon name="alert"></ion-icon>-->
+        <!--About-->
+        <!--</ion-button>-->
+        <!--<ion-button menuClose ion-item icon-left (click)="logout()" detail-none>-->
+        <!--<ion-icon name="exit"></ion-icon>-->
+        <!--Logout-->
+        <!--</ion-button>-->
+        <!--</ion-list>-->
+    </ion-content>
+</ion-menu>
+<ion-router-outlet id="content"></ion-router-outlet>
