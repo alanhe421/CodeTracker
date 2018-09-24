@@ -13,13 +13,14 @@ export class HomePage {
 
     constructor(public authService: AuthService,
                 private route: Router,
-                public modalCtrl: ModalController, private alertCtrl: AlertController) {
+                public modalController: ModalController,
+                private alertCtrl: AlertController) {
         this.userInfo = this.authService.userInfo;
     }
 
     //退出
-    logout() {
-        let confirm = this.alertCtrl.create({
+    async logout() {
+        let confirm = await this.alertCtrl.create({
             header: 'log out?',
             buttons: [
                 {
@@ -37,12 +38,12 @@ export class HomePage {
                 }
             ]
         });
-        confirm.present();
+        await confirm.present();
     }
 
-    presentModal() {
-        let modal = this.modalCtrl.create({component: ProfilePage});
-        modal.present();
+    async presentModal() {
+        let modal = await this.modalController.create({component: ProfilePage});
+        await modal.present();
     }
 
 }

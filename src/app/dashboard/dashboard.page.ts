@@ -1,5 +1,4 @@
-import {Component, ElementRef, ViewChild} from "@angular/core";
-import {Loading, LoadingController} from "@ionic/angular";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import * as moment from "moment";
 import * as echarts from 'echarts';
 import {ApiService} from "../services/api.service";
@@ -8,31 +7,23 @@ import {ApiService} from "../services/api.service";
     selector: 'page-dashboard',
     templateUrl: 'dashboard.page.html'
 })
-export class DashboardPage {
+export class DashboardPage implements OnInit {
 
-    loading: Loading;
     fileDir: string;
     range: string;
     data: any;
     grandTotal: any;
-    @ViewChild('languagesUsed') languagesUsed: ElementRef;//使用语言
-    @ViewChild('editorsUsed') editorsUsed: ElementRef;//编辑器
-    @ViewChild('systemsUsed') systemsUsed: ElementRef;//操作系统
+    @ViewChild('languagesUsed') languagesUsed: ElementRef;
+    @ViewChild('editorsUsed') editorsUsed: ElementRef;
+    @ViewChild('systemsUsed') systemsUsed: ElementRef;
 
-
-    constructor(private apiService: ApiService,
-                public loadingCtrl: LoadingController) {
+    constructor(private apiService: ApiService) {
         this.range = 'last_7_days';
-        this.loading = this.loadingCtrl.create({
-            spinner: 'bubbles',
-            showBackdrop: true,
-        });
 
     }
 
-    ionViewDidLoad() {
+    ngOnInit() {
         console.log('ionViewDidLoad StatsPage');
-        this.loading.present();
         console.log(this.fileDir);
         this.apiService.getStats(this.range).subscribe((res: any) => {
                 console.log(res);
@@ -40,15 +31,13 @@ export class DashboardPage {
                 this.initLanguageUsed(res.data.languages);
                 this.initEditors(res.data.editors);
                 this.initSystemsUsed(res.data.operating_systems);
-                this.loading.dismiss();
             },
             error => {
-                this.loading.dismiss();
             }
         );
         let now = moment().format('YYYY-MM-DD');
 
-        this.apiService.getSummaries(now, now).subscribe(res => {
+        this.apiService.getSummaries(now, now).subscribe((res: any) => {
                 res = res.data[0];
                 this.grandTotal = res['grand_total'];
                 console.log(res['grand_total']);
@@ -56,10 +45,6 @@ export class DashboardPage {
         );
     }
 
-    /**
-     *
-     * @param languages
-     */
     initLanguageUsed(languages: Array<any>): void {
         let container = this.languagesUsed.nativeElement;
         let myChart = echarts.init(container);
@@ -71,8 +56,6 @@ export class DashboardPage {
             },
             legend: {
                 show: true,
-                // orient: 'horizontal',
-                // left: 'left',
                 bottom: 0,
                 data: []
             },
@@ -106,9 +89,6 @@ export class DashboardPage {
         myChart.setOption(option);
     }
 
-    /**
-     *
-     */
     initEditors(editors: Array<any>): void {
         let container = this.editorsUsed.nativeElement;
         let myChart = echarts.init(container);
@@ -154,10 +134,6 @@ export class DashboardPage {
     }
 
 
-    /**
-     *
-     * @param systems
-     */
     initSystemsUsed(systems: Array<any>): void {
         let container = this.systemsUsed.nativeElement;
         let myChart = echarts.init(container);
@@ -201,7 +177,6 @@ export class DashboardPage {
         myChart.setOption(option);
     }
 
-    //刷新
     doRefresh(refresher) {
         let now = moment().format('YYYY-MM-DD');
         this.apiService.getSummaries(now, now).subscribe((res: any) => {

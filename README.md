@@ -28,7 +28,7 @@
 
 
 ------
-## 涉及技术点
+## Tech
 
 + ionic2使用(menu,tabs,nav,native-plugins,http)
 + CORS,跨域问题,chrome需要安装[插件Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
@@ -37,29 +37,28 @@
 ## Commands
 
 ```bash
-# 初始化开发环境
+# init 
 
 $ npm install -g ionic cordova
 
 $ npm i
 
-# 浏览器运行,http://localhost:8100
+# launches in browser,http://localhost:8100
 $ ionic serve
 
-# 构建打包
+# build
 $ ionic cordova build android --prod 
 
-# 签名打包
+# sign
 $ ionic cordova build android --prod --release
 
-# 开发环境真机运行
+# device
 $ ionic cordova run android --livereload -c -s
 
-# 模拟器运行
-$ ionic cordova emulate ios --livereload -c -s
+# emulate
+$ ionic cordova emulate ios -l
 
 ```
-## 入驻商店
+## Store
 
-+ [腾讯应用宝](http://a.app.qq.com/o/simple.jsp?pkgname=cn.he.codetracker)
-+ [小米应用商店](http://app.mi.com/)-ing
++ [Tencent](http://a.app.qq.com/o/simple.jsp?pkgname=cn.he.codetracker)

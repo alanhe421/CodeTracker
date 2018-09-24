@@ -11,7 +11,7 @@ import {Subject} from "rxjs";
 export class ErrorService {
     private error = new Subject<any>();
 
-    error$ = this.error.asObservable();//错误码
+    error$ = this.error.asObservable();
     constructor() {
 
     }

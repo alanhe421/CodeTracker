@@ -67,9 +67,4 @@ export class WelcomePage implements OnInit {
         let url = `http://1991421.cn`;
         this.iab.create(url, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
     }
-
-
-    sayHello() {
-        alert('hello');
-    }
 }
